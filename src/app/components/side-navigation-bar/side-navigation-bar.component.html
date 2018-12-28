@@ -1,0 +1,14 @@
+<div class="navigation-bar-header">
+    <fa-icon [icon] = '_navigationServise.faBars' class="navigation-bar-header__button" (click)=isColapsed()></fa-icon>
+    <div class="logo" *ngIf = "colapseBar">
+        <fa-icon [icon] = '_navigationServise.faWindowClose' class="logo__icon"></fa-icon>
+        <span class="logo__text">Logo</span>
+    </div>
+</div>
+<app-side-navigation-bar-item 
+                                [navIcon]='i.icon'
+                                [showText]='colapseBar'
+                                [navItemText]='i.text'
+                                *ngFor="let i of _navigationServise.items; let l = index"
+                                [routerLink]="routerLink[l].path">
+</app-side-navigation-bar-item>

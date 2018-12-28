@@ -1,0 +1,11 @@
+<div  [style.backgroundImage]="imgUrl"
+      class="movie-list__item"
+      (mouseleave) = "backGround = false"
+      (mouseenter) = "backGround = true">      
+  <div class="movie-list__bg" 
+       *ngIf = "backGround">
+    <div class="movie-list__title">
+      {{itemTitle}}
+    </div>
+  </div>
+</div>

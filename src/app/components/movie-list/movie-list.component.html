@@ -1,0 +1,20 @@
+<div class="scroll-top__container">
+  <app-scroll-top (click) = "scrollContainer.scrollTop = 0"></app-scroll-top>
+  <div class="movie-list__container"  #scrollContainer 
+                                      infiniteScroll 
+                                      [infiniteScrollDistance]="2" 
+                                      [infiniteScrollThrottle]="50"
+                                      [scrollWindow]="false" 
+                                      (scrolled)="onScroll()">
+    <app-list-item  *ngFor="let i of (filmsList$ | async).results; let l = index"
+                    [itemTitle]='i.original_title'
+                    [imgUrl]="'url('+apiImgUrl+i.poster_path+')'"
+                    class="list-item list-item__container"
+                    (click) = "getItem(i)"
+                    routerLink = "/movie/details"
+                    >                 
+    </app-list-item>
+    <router-outlet class="subscribe-item subscribe-item-container">
+    </router-outlet>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="subscribe-item subscribe-item-container">
+  <div class="subscribe-item__header">
+    <div [style.backgroundImage]="'url('+apiImgUrl+itemDescribtion.backdrop_path+')'" class="subscribe-item__img">
+    </div>
+    <div class="subscribe-item__title-container">
+      <input type="button" value="Add to library" (click) = 'setToLocal(itemDescribtion)' class="subscribe-item__button">
+      <p class="subscribe-item__title">
+        {{itemDescribtion.original_title || itemDescribtion.original_name}}
+      </p>
+      <p class="subscribe-item__overview">
+        {{itemDescribtion.overview}}
+      </p>
+    </div>
+  </div>
+  <div class="subscribe-item__release-date-container">
+    <p class="subscribe-item__release-date">
+      Release date: {{itemDescribtion.release_date || itemDescribtion.first_air_date}}
+    </p>
+    <label for="" class="subscribe-item__rating-label">Rating: {{itemDescribtion.vote_average}}</label>
+    <div class="subscribe-item__rating">
+      <div class="subscribe-item__avarege" [style.width]="itemDescribtion.vote_average*10 +'%'">
+      </div>
+    </div>
+  </div>
+</div>

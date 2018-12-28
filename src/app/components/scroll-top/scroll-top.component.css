@@ -1,0 +1,19 @@
+.scroll__top-container {
+   width: 2em;
+   height: 88vh;
+   border: 2px black solid;
+   margin:0 0 0 0.25em ;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.scroll__top-container:hover{
+   border-color: rgb(81, 81, 81);
+   cursor: pointer;
+}
+
+.scroll__top-icon{
+   font-size: 1em;
+   color: rgb(81, 81, 81);
+}

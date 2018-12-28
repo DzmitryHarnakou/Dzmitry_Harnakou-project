@@ -1,0 +1,19 @@
+.search-item {
+    border: 2px;
+    border-color: rgb(71, 93, 121);
+    border-style: solid;
+}
+
+.search-item__input {
+    background-color: rgb(49, 64, 82);
+    border: 0;
+    color: rgb(92, 92, 92);
+
+}
+
+.search-item__button {
+    background-color: rgb(229, 229, 229);
+    color: rgb(92, 92, 92);
+    padding-left: 2px;
+    padding-right: 2px;
+}

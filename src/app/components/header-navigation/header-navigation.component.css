@@ -1,0 +1,10 @@
+
+.header-navigation__item {
+    color: rgb(0, 136, 204);
+    border-right: 2px rgb(92, 92, 92) solid;
+    height: max-content;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    font-size: 1em;
+
+}

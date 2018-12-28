@@ -1,0 +1,30 @@
+.check{
+    display: none;
+}
+
+.checkbox__field{
+    height: 13px;
+    width: 13px;
+    border: 1px solid rgb(92, 92, 92);
+    background-color: rgb(38, 33, 38);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.checkbox__mark{
+    color: rgb(92, 92, 92);
+}
+
+.checkbox_position {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.checkbox__label-text {
+    font-size: 0.8em;
+    user-select: none;
+}

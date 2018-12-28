@@ -1,0 +1,134 @@
+.subscribe-item__img {
+  background: rgba(82, 78, 82, 0.7);
+  width: 40vw;
+  height: 25vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.subscribe-item {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.subscribe-item__title {
+  font-family: sans-serif;
+  font-size: 1.5em;
+  border: 2px solid rgb(82, 78, 82);
+  width: 100%;
+  height: max-content;
+  padding: 0.5em;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 0.25em;
+}
+
+.subscribe-item__overview {
+  font-family: sans-serif;
+  font-size: 0.9em;
+  border: 2px solid rgb(82, 78, 82);
+  width: 100%;
+  height: max-content;
+  padding: 0.5em;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 0.25em;
+}
+
+.subscribe-item__release-date {
+  font-family: sans-serif;
+  font-size: 0.7em;
+  width: 90%;
+  height: max-content;
+  padding: 0.25em 0 0.25em 0.25em;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 0.25em;
+}
+
+.subscribe-item__rating-label {
+  font-family: sans-serif;
+  font-size: 0.7em;
+  width: 90%;
+  height: max-content;
+  padding: 0.25em 0 0.25em 0.25em;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 0.5em;
+}
+
+.subscribe-item__rating {
+  height: 1em;
+  width: 98%;
+  border-radius: 5px;
+  border: 2px solid rgb(82, 78, 82);
+}
+
+.subscribe-item__avarege {
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid rgba(38, 33, 38, 0.95);
+  box-sizing: border-box;
+}
+
+.subscribe-item__img-btn-close:hover {
+  background-color: rgba(38, 33, 38, 0.95);
+  color: rgba(82, 78, 82, 0.7);
+}
+
+.subscribe-item-container {
+  position: absolute;
+  background: rgba(38, 33, 38, 0.95);
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  color: white;
+}
+
+.subscribe-item__header {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subscribe-item__title-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.subscribe-item__button {
+  width: 9em;
+  height: 2em;
+  margin-bottom: 2em;
+  border-radius: 5px;
+  border: 0;
+}
+
+.subscribe-item__release-date-container {
+  width: 90%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+  border: 2px solid rgb(82, 78, 82);
+  box-sizing: border-box;
+  padding-left: 1em;
+}

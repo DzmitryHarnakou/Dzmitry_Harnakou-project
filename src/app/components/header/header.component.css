@@ -1,0 +1,20 @@
+.header__container {
+    background-color: rgb(38, 33, 38);
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 2em;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.search-item {
+    border: 2px;
+    border-color: rgb(71, 93, 121);
+    border-style: solid;
+}
+
+.header-navigation {
+    display: flex;
+}

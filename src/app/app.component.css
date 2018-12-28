@@ -1,0 +1,31 @@
+.movieDB__container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.side-navigation-bar__container {
+    width: max-content;
+    height: 100vh;
+}
+
+.side-navigation-bar {
+    background-color: rgb(58, 60, 90);
+    background: linear-gradient(to bottom, rgb(58, 60, 90), rgb(51,53,57));
+    color: white;
+}
+
+.header__container {
+    width: 100%;
+    height: 10vh;
+}
+
+.content__container {
+    height: 100vh;
+    width: 100%;
+}
+
+.scroll-top__container {
+    display: flex;
+    flex-direction: row;
+}

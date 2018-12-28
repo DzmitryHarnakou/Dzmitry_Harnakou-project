@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face{
+    font-family: SetFireToTheRain;
+    src: url(./app/fonts/SetFireToTheRain.ttf);
+}
+
+
+*{
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    font-family: SetFireToTheRain;
+}
