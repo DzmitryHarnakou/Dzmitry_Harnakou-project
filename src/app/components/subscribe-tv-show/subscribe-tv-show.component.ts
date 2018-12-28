@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../store/reducers/index';
 import * as  movieDbActions from '../../store/actions/movieDB.actions';
-
 import { TvShowListItem } from '../../store/models/tv-show-list-item';
 
 @Component({
@@ -20,7 +19,8 @@ export class SubscribeTvShowComponent implements OnInit {
   ngOnInit() {
   }
 
-  setToLocalStorage() {
+  setMovieToLocal(itemDesc:TvShowListItem) {
+      this.store.dispatch(new movieDbActions.SetTvShowListToLocalStorage(itemDesc));
   }
 
 }

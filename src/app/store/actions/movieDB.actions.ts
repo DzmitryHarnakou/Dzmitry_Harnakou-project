@@ -6,12 +6,22 @@ export enum MovieDbActionTypes {
     SubscribeMovie = '[MovieDb] SubscribeMovie',
     SubscribeTvShow = '[MovieDb] SubscribeTvShow',
 
+
+
     SetMovieListToLocalStorage = '[MovieDb] SetMovieListToLocalStorage',
     SetMovieListToLocalStorageSucsess = '[MovieDb] SetMovieListToLocalStorageSucsess',
 
-    
     GetMovieListFromLocalStorage = '[MovieDb] GetMovieListFromLocalStorage',
     GetMovieListFromLocalStorageSucsess = '[MovieDb] GetMovieListFromLocalStorageSucsess',
+
+
+
+    SetTvShowListToLocalStorage = '[MovieDb] SetTvShowListToLocalStorage',
+    SetTvShowListToLocalStorageSucsess = '[MovieDb] SetTvShowListToLocalStorageSucsess',
+
+    GetTvShowListFromLocalStorage = '[MovieDb] GetTvShowListFromLocalStorage',
+    GetTvShowListFromLocalStorageSucsess = '[MovieDb] GetTvShowListFromLocalStorageSucsess',
+
 }
 
 
@@ -57,12 +67,47 @@ export class GetMovieListFromLocalStorageSucsess implements Action {
 
 
 
+export class SetTvShowListToLocalStorage implements Action {
+    readonly type = MovieDbActionTypes.SetTvShowListToLocalStorage;
+
+    constructor (public payload:TvShowListItem) {}
+}
+
+export class SetTvShowListToLocalStorageSucsess implements Action {
+    readonly type = MovieDbActionTypes.SetTvShowListToLocalStorageSucsess;
+
+    constructor (public payload:TvShowListItem[]) {}
+}
+
+
+
+export class GetTvShowListFromLocalStorage implements Action {
+    readonly type = MovieDbActionTypes.GetTvShowListFromLocalStorage;
+
+}
+
+export class GetTvShowListFromLocalStorageSucsess implements Action {
+    readonly type = MovieDbActionTypes.GetTvShowListFromLocalStorageSucsess;
+
+    constructor (public payload:TvShowListItem[]) {}
+}
+
+
+
 export type MovieDbActions = 
   | SubscribeMovie
   | SubscribeTvShow
+
 
   | SetMovieListToLocalStorage
   | SetMovieListToLocalStorageSucsess
 
   | GetMovieListFromLocalStorage
   | GetMovieListFromLocalStorageSucsess
+
+
+  | SetTvShowListToLocalStorage
+  | SetTvShowListToLocalStorageSucsess
+
+  | GetTvShowListFromLocalStorage
+  | GetTvShowListFromLocalStorageSucsess

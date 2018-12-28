@@ -1,7 +1,7 @@
 <div class="library library__container">
   <div class="library-movie__container">
     <p class="library-movie__header">
-      Movies
+      Movies {{(filmsList$ | async).length}}
     </p>
     <div class="library_items-container">
       <app-list-item class="list-item list-item__container"
@@ -12,7 +12,7 @@
   </div>
   <div class="library-movie__container">
     <p class="library-movie__header">
-      TV Show {{(filmsList$ | async).length}}
+      TV Show {{(tvShowList$ | async).length}}
     </p>
     <div class="library_items-container">
       <app-list-item class="list-item list-item__container">

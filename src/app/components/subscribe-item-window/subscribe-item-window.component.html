@@ -3,7 +3,7 @@
     <div [style.backgroundImage]="'url('+apiImgUrl+itemDescribtion.backdrop_path+')'" class="subscribe-item__img">
     </div>
     <div class="subscribe-item__title-container">
-      <input type="button" value="Add to library" (click) = 'setToLocal(itemDescribtion)' class="subscribe-item__button">
+      <input type="button" value="Add to library" (click) = 'setToLocal($event)' class="subscribe-item__button">
       <p class="subscribe-item__title">
         {{itemDescribtion.original_title || itemDescribtion.original_name}}
       </p>

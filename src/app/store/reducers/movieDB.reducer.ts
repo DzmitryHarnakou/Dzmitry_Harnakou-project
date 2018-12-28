@@ -38,7 +38,7 @@ export function reducer(state = initialState, action: movieDbActions.MovieDbActi
       case movieDbActions.MovieDbActionTypes.SetMovieListToLocalStorageSucsess:
       return {
         ...state,
-        // localMovieList: action.payload,
+        localMovieList: action.payload,
       };
 
       case movieDbActions.MovieDbActionTypes.GetMovieListFromLocalStorage:
@@ -48,6 +48,24 @@ export function reducer(state = initialState, action: movieDbActions.MovieDbActi
       return {
         ...state,
         localMovieList: action.payload,
+      };
+
+      case movieDbActions.MovieDbActionTypes.SetTvShowListToLocalStorage:
+      return state;
+
+      case movieDbActions.MovieDbActionTypes.SetTvShowListToLocalStorageSucsess:
+      return {
+        ...state,
+        localTvShowList: action.payload,
+      };
+
+      case movieDbActions.MovieDbActionTypes.GetTvShowListFromLocalStorage:
+      return state;
+
+      case movieDbActions.MovieDbActionTypes.GetTvShowListFromLocalStorageSucsess:
+      return {
+        ...state,
+        localTvShowList: action.payload,
       };
 
       default:

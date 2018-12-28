@@ -17,19 +17,29 @@ export class MovieDbEffects {
               private _localStorageService: LocalStorageService,
               private  store:Store<fromRoot.State>) {}
 
-  async set(action:any) {
+  async setMovieToLocal(action:any) {
     return this._localStorageService.setMovieToLocalStorage(action.payload)
   }
 
-  async get() {
+  async getMovieFromLocal() {
     return this._localStorageService.getMovieListFromLocalStorage()
   }
+
+
+  async setTvShowToLocal(action:any) {
+    return this._localStorageService.setTvShowToLocalStorage(action.payload)
+  }
+
+  async getTvShowFromLocal() {
+    return this._localStorageService.getTvShowListFromLocalStorage()
+  }
+  
 
   @Effect ()
   public setMovieToLocalStorage$ = this.actions$.pipe(
   ofType(movieDbActions.MovieDbActionTypes.SetMovieListToLocalStorage),
   switchMap(( action: movieDbActions.SetMovieListToLocalStorage ) => from(
-  this.set(action)).pipe(
+  this.setMovieToLocal(action)).pipe(
   map((resultArray:any)=> new movieDbActions.SetMovieListToLocalStorageSucsess(
   resultArray), catchError(err => err)))));
   
@@ -37,11 +47,28 @@ export class MovieDbEffects {
   @Effect ()
   public getMovieToLocalStorage$ = this.actions$.pipe(
   ofType(movieDbActions.MovieDbActionTypes.GetMovieListFromLocalStorage),
-  switchMap(() => from(this.get()
+  switchMap(() => from(this.getMovieFromLocal()
      ).pipe(
   map((resultArray:any)=> new movieDbActions.GetMovieListFromLocalStorageSucsess(
   resultArray), catchError(err => err)))));
   
+
+  @Effect ()
+  public setTvShowToLocalStorage$ = this.actions$.pipe(
+  ofType(movieDbActions.MovieDbActionTypes.SetTvShowListToLocalStorage),
+  switchMap(( action: movieDbActions.SetTvShowListToLocalStorage ) => from(
+  this.setTvShowToLocal(action)).pipe(
+  map((resultArray:any)=> new movieDbActions.SetTvShowListToLocalStorageSucsess(
+  resultArray), catchError(err => err)))));
+  
+
+  @Effect ()
+  public getTvShowFromLocalStorage$ = this.actions$.pipe(
+  ofType(movieDbActions.MovieDbActionTypes.GetTvShowListFromLocalStorage),
+  switchMap(() => from(this.getTvShowFromLocal()
+     ).pipe(
+  map((resultArray:any)=> new movieDbActions.GetTvShowListFromLocalStorageSucsess(
+  resultArray), catchError(err => err)))));
 }
 
  
