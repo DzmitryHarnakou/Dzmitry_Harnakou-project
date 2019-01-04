@@ -1,0 +1,14 @@
+.support__container{
+    background-color: rgb(38, 33, 38);
+    width: 100%;
+    height: 90%;
+    color: rgb(92, 92, 92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.support__icon {
+    font-size: 10em;
+}

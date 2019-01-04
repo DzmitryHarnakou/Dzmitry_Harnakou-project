@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import { SearchFormService } from '../../services/search-form.service';
 
 @Component({
   selector: 'app-search-item',
@@ -10,16 +11,10 @@ export class SearchItemComponent implements OnInit {
 
   faSearch = faSearch;
 
-  constructor() { }
-  
-  public showForm:boolean = false;
+  constructor(private _searchFormService:SearchFormService) { }
 
   toggle () {
-    if(this.showForm) {
-      this.showForm = false;
-    } else {
-      this.showForm = true;
-    }
+    this._searchFormService.toggle();
   }
 
   ngOnInit() {

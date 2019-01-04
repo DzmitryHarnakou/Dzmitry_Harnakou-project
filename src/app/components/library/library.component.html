@@ -1,21 +1,35 @@
 <div class="library library__container">
-  <div class="library-movie__container">
+  <div class="library-movie__container" *ngIf = "(filmsList$ | async).length; else false">
     <p class="library-movie__header">
-      Movies {{(filmsList$ | async).length}}
+      Movies
     </p>
     <div class="library_items-container">
       <app-list-item class="list-item list-item__container"
-                     *ngFor = 'let i of filmsList'
-                     (click) = 'delete(i)'>
+                     *ngFor = 'let i of (filmsList$ | async) as filmlist'
+                     [itemTitle]='i.original_title'
+                     [imgUrl]="'url('+apiImgUrl+i.poster_path+')'"
+                     (click) = "showMovie(i)"
+                     (mouseleave) = "showMovie(false)"
+                     (dblclick) = "removeMovie(i)">
       </app-list-item>
     </div>
   </div>
-  <div class="library-movie__container">
+  <div *ngIf = '!(tvShowList$ | async).length && !(filmsList$ | async).length' class="library__icon-container">
+    <fa-icon [icon] = 'faBook' class="library__icon"></fa-icon>
+    <span class="library__bacground-text">Library</span>
+  </div>
+  <div class="library-movie__container" *ngIf = "(tvShowList$ | async).length; else false">
     <p class="library-movie__header">
-      TV Show {{(tvShowList$ | async).length}}
+      TV Show
     </p>
     <div class="library_items-container">
-      <app-list-item class="list-item list-item__container">
+      <app-list-item class="list-item list-item__container"
+                     *ngFor = 'let y of (tvShowList$ | async)'
+                     [itemTitle]='y.original_name'
+                     [imgUrl]="'url('+apiImgUrl+y.poster_path+')'"
+                     (click) = "showTvShow(y)"
+                     (mouseleave) = "showTvShow(false)"
+                     (dblclick) = "removeTvShow(y)">
       </app-list-item>
     </div>
   </div>

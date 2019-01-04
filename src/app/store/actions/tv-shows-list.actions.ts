@@ -1,13 +1,16 @@
 import { Action } from '@ngrx/store';
+import { TvShowListItem } from '../models/tv-show-list-item';
 
 export enum TvShowListActionTypes {
   LoadTvShowList = '[TvShowList] LoadTvShowList',
   LoadTvShowListSucsess = '[TvShowList] LoadTvShowListSucsess',
   LoadTvShowListError = '[TvShowList] LoadTvShowListError',
+  UpdateIsInLocal = '[TvShowList] UpdateIsInLocal',
 
   LoadNextPage = '[TvShowList] LoadNextPage',
   LoadNextPageSucsess = '[TvShowList] LoadNextPageSucsess',
   LoadNextPageError = '[TvShowList] LoadNextPageError',
+
 }
 
 export class LoadTvShowList implements Action {
@@ -27,7 +30,11 @@ export class LoadTvShowListError implements Action {
   constructor (public payload:any) {}
 }
 
+export class UpdateIsInLocal implements Action {
+  readonly type = TvShowListActionTypes.UpdateIsInLocal;
 
+  constructor (public payload: TvShowListItem) {}
+}
 
 export class LoadNextPage implements Action {
   readonly type = TvShowListActionTypes.LoadNextPage;
@@ -35,7 +42,7 @@ export class LoadNextPage implements Action {
 
 export class LoadNextPageSucsess implements Action {
   readonly type = TvShowListActionTypes.LoadNextPageSucsess;
-
+  
   constructor (public payload:any) {}
 }
 
@@ -43,11 +50,12 @@ export class LoadNextPageError implements Action {
   readonly type = TvShowListActionTypes.LoadNextPageError;
   constructor (public payload:any) {}
 }
-
 export type TvShowListActions = 
   | LoadTvShowList
   | LoadTvShowListSucsess
   | LoadTvShowListError
+  | UpdateIsInLocal
   | LoadNextPage
   | LoadNextPageSucsess
   | LoadNextPageError
+

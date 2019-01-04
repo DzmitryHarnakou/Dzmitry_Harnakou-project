@@ -16,7 +16,9 @@ export class TvShowsListComponent implements OnInit {
 
   public apiImgUrl: string = apiUrl.imageUrl;
 
-  public tvShowList$ = this.store.select((s => s.tvShowList))
+  public isInLibrary$ = this.store.select(s => s.tvShowList.isInLib);
+
+  public tvShowList$ = this.store.select((s => s.tvShowList));
 
   public constructor(private store:Store<fromRoot.State>) {}
 
@@ -26,6 +28,7 @@ export class TvShowsListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new tvShowListActions.LoadTvShowList());
+    this.store.dispatch(new movieDbActions.GetTvShowListFromLocalStorage());
   }
 
   getItem(i) {

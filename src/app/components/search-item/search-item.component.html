@@ -1,3 +1,3 @@
   <input type="text" class="search-item__input" placeholder="Search...">
   <fa-icon [icon] = "faSearch" class="search-item__button" (click) = "toggle()"></fa-icon>
-  <app-search-form *ngIf = "showForm"></app-search-form>
+  <app-search-form *ngIf = "this._searchFormService.showForm" [style.display] = "this._searchFormService.displayForm"></app-search-form>

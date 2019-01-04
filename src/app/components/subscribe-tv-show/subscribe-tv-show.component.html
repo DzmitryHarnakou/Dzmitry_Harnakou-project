@@ -1,2 +1,4 @@
 <app-subscribe-item-window [itemDescribtion] = 'itemDescribtion$ | async'
-                           (setItemToLocal) = 'setMovieToLocal($event)'></app-subscribe-item-window>
+                           (setItemToLocal) = 'setMovieToLocal($event)'
+                           [isItemInLibrary] = 'isTvShowInLibrary$ | async'>
+                            </app-subscribe-item-window>

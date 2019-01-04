@@ -26,3 +26,7 @@
     font-weight: bold;
     color: white;
 }
+
+.movie-list__in-library {
+    font-size: 3em;
+}

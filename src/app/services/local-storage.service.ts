@@ -43,9 +43,10 @@ export class LocalStorageService {
     }
   }
 
-  public setTvShowToLocalStorage(tvShowItem:TvShowListItem):void {
+  public setTvShowToLocalStorage(tvShowItem:TvShowListItem) {
     this.updatedTvShowList = [...this.getTvShowListFromLocalStorage(), tvShowItem]
     localStorage.setItem('tvShowList', JSON.stringify(this.updatedTvShowList));
+    return this.updatedTvShowList;
   }
 
   public removeTvShowFromLocalStorage(tvShowItem:TvShowListItem) {

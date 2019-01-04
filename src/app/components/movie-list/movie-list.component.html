@@ -6,14 +6,19 @@
                                       [infiniteScrollThrottle]="50"
                                       [scrollWindow]="false" 
                                       (scrolled)="onScroll()">
-    <app-list-item  *ngFor="let i of (filmsList$ | async).results; let l = index"
+    <app-list-item  *ngFor="let i of (filmsList$ | async).movieResults; let l = index"
                     [itemTitle]='i.original_title'
                     [imgUrl]="'url('+apiImgUrl+i.poster_path+')'"
                     class="list-item list-item__container"
                     (click) = "getItem(i)"
                     routerLink = "/movie/details"
+                    [isInLibrary] = "(isInLibrary$ | async)[l]"
                     >                 
     </app-list-item>
+    <div *ngIf = '!(filmsList$ | async).movieResults.length' class="warning-message">
+      <fa-icon [icon] = "faSearch" class="warning-message__icon"></fa-icon>
+      <span class="warning-message__text">NO RESULTS</span>
+    </div>
     <router-outlet class="subscribe-item subscribe-item-container">
     </router-outlet>
   </div>

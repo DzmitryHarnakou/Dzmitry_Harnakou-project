@@ -33,7 +33,9 @@ import { SubscribeMovieComponent } from './components/subscribe-movie/subscribe-
 import { SubscribeTvShowComponent } from './components/subscribe-tv-show/subscribe-tv-show.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { MovieDbEffects } from './store/effects/movieDB.effects';
-
+import { SearchFormService } from './services/search-form.service';
+import { SupportComponent } from './components/support/support.component';
+import { SearchService } from './services/search.service'
 
 
 
@@ -56,6 +58,7 @@ import { MovieDbEffects } from './store/effects/movieDB.effects';
     ProgressbarComponent,
     SubscribeMovieComponent,
     SubscribeTvShowComponent,
+    SupportComponent,
   ],
   imports: [
     FormsModule,
@@ -68,7 +71,7 @@ import { MovieDbEffects } from './store/effects/movieDB.effects';
     EffectsModule.forRoot([FilmsListEffects, TvShowListEffects, MovieDbEffects]),
     InfiniteScrollModule,
   ],
-  providers: [NavigationService, LocalStorageService],
+  providers: [NavigationService, LocalStorageService, SearchFormService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

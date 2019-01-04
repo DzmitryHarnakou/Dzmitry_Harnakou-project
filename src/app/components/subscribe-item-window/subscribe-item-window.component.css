@@ -102,6 +102,7 @@
 .subscribe-item__header {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   width: 90%;
   justify-content: space-between;
   align-items: center;
@@ -131,4 +132,25 @@
   border: 2px solid rgb(82, 78, 82);
   box-sizing: border-box;
   padding-left: 1em;
+}
+
+.subscribe-item__icon-close-container {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.subscribe-item__icon-close {
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.subscribe-item__icon-close:hover {
+  color:rgba(82, 78, 82, 0.7);
+  cursor: pointer;
+  background-color: rgba(65, 62, 62, 0.7);
 }

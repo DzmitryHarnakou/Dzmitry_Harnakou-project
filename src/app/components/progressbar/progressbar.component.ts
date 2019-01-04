@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-progressbar',
@@ -8,12 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProgressbarComponent implements OnInit {
 
   @Input () label:string;
+  @Output () getCurValue = new EventEmitter ();
   value:string;
   color:string;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getValue(evt: MouseEvent){
+    this.getCurValue.emit((evt.offsetX)/2);
   }
 
   changeValue(evt: MouseEvent){
@@ -26,5 +31,4 @@ export class ProgressbarComponent implements OnInit {
     }
     return evt.offsetX/20;
   }
-
 }

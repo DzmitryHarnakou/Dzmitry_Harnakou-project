@@ -3,13 +3,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: space-between;
+    align-items: space-around;
     width: 100%;
     height: 90vh;
     overflow-y: scroll;
     background-color: rgb(38, 33, 38);
-    margin: 0 0.25em 0 0.25em;
-
 }
 
 .scroll-top__container {
@@ -26,4 +24,20 @@ color: white;
     margin-bottom: 1em;
 }
 
+.warning-message {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(92, 92, 92); 
+}
 
+.warning-message__text{
+    font-size: 3em;
+}
+
+.warning-message__icon{
+    font-size: 7em;
+}

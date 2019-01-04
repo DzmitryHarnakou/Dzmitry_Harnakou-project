@@ -1,11 +1,14 @@
 <div class="subscribe-item subscribe-item-container">
+  <div class="subscribe-item__icon-close-container">
+    <fa-icon [icon]="faTimes" (click)='goBack()' class="subscribe-item__icon-close"></fa-icon>
+  </div>
   <div class="subscribe-item__header">
     <div [style.backgroundImage]="'url('+apiImgUrl+itemDescribtion.backdrop_path+')'" class="subscribe-item__img">
     </div>
     <div class="subscribe-item__title-container">
-      <input type="button" value="Add to library" (click) = 'setToLocal($event)' class="subscribe-item__button">
+      <input type="button" [value]="buttonValue" (click)='setToLocal(); button.value = "Added"' #button class="subscribe-item__button">
       <p class="subscribe-item__title">
-        {{itemDescribtion.original_title || itemDescribtion.original_name}}
+        {{itemDescribtion.original_title || itemDescribtion.original_name}}{{isItemInLibrary}}
       </p>
       <p class="subscribe-item__overview">
         {{itemDescribtion.overview}}

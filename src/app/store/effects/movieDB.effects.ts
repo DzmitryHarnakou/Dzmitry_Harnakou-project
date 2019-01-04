@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { LocalStorageService } from '../../services/local-storage.service';
-import { switchMap, mapTo, tap, map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError } from 'rxjs/operators';
 import * as movieDbActions from '../actions/movieDB.actions';
-import  { Store } from '@ngrx/store';
-import { Observable, of, from } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { from } from 'rxjs';
 import * as fromRoot from '../reducers/index';
 import { MovieListItem } from '../models/movie-list-item';
 
@@ -17,23 +17,42 @@ export class MovieDbEffects {
               private _localStorageService: LocalStorageService,
               private  store:Store<fromRoot.State>) {}
 
-  async setMovieToLocal(action:any) {
-    return this._localStorageService.setMovieToLocalStorage(action.payload)
+  async setMovieToLocal(action:movieDbActions.SetMovieListToLocalStorage) {
+    for (var i = 0; i< this._localStorageService.getMovieListFromLocalStorage().length; i++) {
+      if (this._localStorageService.getMovieListFromLocalStorage()[i].id == action.payload.id){
+        return;
+      }
+    }
+    return this._localStorageService.setMovieToLocalStorage(action.payload);
   }
 
   async getMovieFromLocal() {
-    return this._localStorageService.getMovieListFromLocalStorage()
+    return this._localStorageService.getMovieListFromLocalStorage();
   }
 
 
   async setTvShowToLocal(action:any) {
-    return this._localStorageService.setTvShowToLocalStorage(action.payload)
+    for (var y = 0; y < this._localStorageService.getTvShowListFromLocalStorage().length; y++) {
+      if (Number(this._localStorageService.getTvShowListFromLocalStorage()[y].id) == Number(action.payload.id)){
+        return;
+      }
+    }
+    return this._localStorageService.setTvShowToLocalStorage(action.payload);
   }
 
   async getTvShowFromLocal() {
-    return this._localStorageService.getTvShowListFromLocalStorage()
+    return this._localStorageService.getTvShowListFromLocalStorage();
   }
-  
+ 
+  async removeMoviefromLocal(action:any) {
+    this._localStorageService.removeMovieFromLocalStorage(action);
+    return this._localStorageService.getMovieListFromLocalStorage();
+  }
+
+  async removeTvShowfromLocal(action:any) {
+    this._localStorageService.removeTvShowFromLocalStorage(action);
+    return this._localStorageService.getTvShowListFromLocalStorage();
+  }
 
   @Effect ()
   public setMovieToLocalStorage$ = this.actions$.pipe(
@@ -45,7 +64,7 @@ export class MovieDbEffects {
   
 
   @Effect ()
-  public getMovieToLocalStorage$ = this.actions$.pipe(
+  public getMovieFromLocalStorage$ = this.actions$.pipe(
   ofType(movieDbActions.MovieDbActionTypes.GetMovieListFromLocalStorage),
   switchMap(() => from(this.getMovieFromLocal()
      ).pipe(
@@ -69,6 +88,23 @@ export class MovieDbEffects {
      ).pipe(
   map((resultArray:any)=> new movieDbActions.GetTvShowListFromLocalStorageSucsess(
   resultArray), catchError(err => err)))));
+
+  @Effect ()
+  public removeMovieItem$ = this.actions$.pipe(
+    ofType(movieDbActions.MovieDbActionTypes.RemoveMovie),
+    switchMap(( action: movieDbActions.RemoveMovie ) => from(
+    this.removeMoviefromLocal(action.payload)).pipe(
+    map((resultArray:any)=> new movieDbActions.GetMovieListFromLocalStorageSucsess(resultArray
+    ), catchError(err => err)))));
+
+    
+  @Effect ()
+  public removeTvShowItem$ = this.actions$.pipe(
+    ofType(movieDbActions.MovieDbActionTypes.RemoveTvShow),
+    switchMap(( action: movieDbActions.RemoveTvShow) => from(
+    this.removeTvShowfromLocal(action.payload)).pipe(
+    map((resultArray:any)=> new movieDbActions.GetTvShowListFromLocalStorageSucsess(resultArray
+    ), catchError(err => err)))));
 }
 
  

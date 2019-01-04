@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/reducers/index';
 import * as  movieDbActions from '../../store/actions/movieDB.actions';
 import { MovieListItem } from '../../store/models/movie-list-item';
+import * as filmListActions from '../../store/actions/film-list.actions';
 
 @Component({
   selector: 'app-subscribe-movie',
@@ -13,14 +14,17 @@ import { MovieListItem } from '../../store/models/movie-list-item';
 export class SubscribeMovieComponent implements OnInit {
 
   private itemDescribtion$ = this.store.select(s => s.movieDb.movieToSubscribe);
+  private isMovieInLibrary$ = this.store.select(s => s.movieDb.isMovieInLib);
 
   constructor(private store:Store<fromRoot.State>) { }
 
   ngOnInit() {
+    this.store.dispatch(new movieDbActions.IsMovieInLibrary());
+    this.store.dispatch(new movieDbActions.GetMovieListFromLocalStorage());
   }
 
-  setMovieToLocal(itemDesc: MovieListItem) {
+  public setMovieToLocal(itemDesc: MovieListItem) {
       this.store.dispatch(new movieDbActions.SetMovieListToLocalStorage(itemDesc));
+      this.store.dispatch(new filmListActions.UpdateIsInLocal(itemDesc));
   }
-
 }

@@ -4,6 +4,7 @@ import { TvShowsListComponent } from '../components/tv-shows-list/tv-shows-list.
 import { LibraryComponent } from '../components/library/library.component';
 import { SubscribeMovieComponent } from '../components/subscribe-movie/subscribe-movie.component';
 import { SubscribeTvShowComponent } from '../components/subscribe-tv-show/subscribe-tv-show.component';
+import { SupportComponent } from '../components/support/support.component';
 
 export const movieListRoutes:Routes = [
     { path: 'details', component: SubscribeMovieComponent},
@@ -15,9 +16,9 @@ export const tvShowListRoutes:Routes = [
 
 export const appRoutes: Routes =[
     { path: 'movie', component: MovieListComponent, children: movieListRoutes},
-    { path: 'tv#shows', component: TvShowsListComponent,children: tvShowListRoutes},
+    { path: 'tv#shows', component: TvShowsListComponent, children: tvShowListRoutes},
     { path: 'my#library', component: LibraryComponent},
-    { path: 'support', component: MovieListComponent},
+    { path: 'support', component: SupportComponent},
     { path: '**', redirectTo: 'movie', pathMatch: 'full'},
 ];
 
