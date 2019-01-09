@@ -6,9 +6,13 @@
     <div [style.backgroundImage]="'url('+apiImgUrl+itemDescribtion.backdrop_path+')'" class="subscribe-item__img">
     </div>
     <div class="subscribe-item__title-container">
-      <input type="button" [value]="buttonValue" (click)='setToLocal(); button.value = "Added"' #button class="subscribe-item__button">
+      <input type="button"  [value]="buttonValue"
+                            (click)='setToLocal(); button.value = "Added"' 
+                            #button
+                            *ngIf = "showbutton" 
+                            class="subscribe-item__button">
       <p class="subscribe-item__title">
-        {{itemDescribtion.original_title || itemDescribtion.original_name}}{{isItemInLibrary}}
+        {{itemDescribtion.original_title || itemDescribtion.original_name}}
       </p>
       <p class="subscribe-item__overview">
         {{itemDescribtion.overview}}

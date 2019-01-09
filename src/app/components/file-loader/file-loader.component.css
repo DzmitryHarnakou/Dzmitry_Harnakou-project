@@ -1,0 +1,86 @@
+#file-loader {
+  display: none;
+}
+
+.file-loader__button {
+  background: repeating-linear-gradient(-45deg, rgb(53, 53, 53),
+  rgb(53, 53, 53) .5em, transparent .5em, transparent 1em);
+  border: 1px black dashed;
+  background-color: rgb(42, 42, 42);
+  padding: 0.7em;
+  cursor: pointer;
+  padding-right: 4em;
+  user-select: none;
+}
+
+.file-loader__button:hover{
+    border: 1px wheat solid;
+    color: wheat;
+
+}
+
+.file-loader__button-icon {
+    font-size: 1.5em;
+}
+
+.file-loader__button-text {
+    margin-left: 0.5em;
+}
+
+.file-loader__image{
+    height: 3em;
+    width: 2em;
+    margin-top: 0.8em;
+    margin-right: 0.5em;
+}
+
+.file-loader__progress-mesure{
+    height: 100%;
+    width: 30%;
+    background-color: rgb(87, 148, 96);
+    border-radius: 3px;
+}
+
+.file-loader__file-container {
+    overflow-x: scroll; 
+}
+
+.file-loader__progress-container{
+    border: 1px black solid;
+    border-radius: 3px;
+    height: 0.8em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.file-loader__file-container{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 13em;
+    overflow-x: scroll;
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+	height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(20, 20, 20);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(71, 71, 71);
+    border-radius: 2.5px;
+}
+
+.search-form__validation-text {
+    color: red;
+    font-size: 0.6em;
+    position: absolute;
+}
+
+.file-loader__container {
+    margin-bottom: 0.4em;
+}

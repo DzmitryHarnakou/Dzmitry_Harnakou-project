@@ -7,17 +7,17 @@ import { faFilm, faTv, faBook, faUserCircle,faBars,faWindowClose, faUser, faPlus
 })
 export class NavigationService {
   
-  public showMenu = true;
+  public showMenu:boolean = true;
   public faBars:any = faBars;
   public faWindowClose:any =faWindowClose;
-  public items = [
+  public items:object[] = [
     {icon: faFilm, text: "Movies"},
     {icon: faTv, text: "TV Shows"},
     {icon: faBook, text: "My Library"},
     {icon: faUserCircle, text: "Support"}
   ]
 
-  public headerNavItems = [
+  public headerNavItems:object[] = [
     {icon: faPlus, text: "Add movie"},
     {icon: faUser, text: "About"},
     {icon: faDollarSign, text: "Pricing"},

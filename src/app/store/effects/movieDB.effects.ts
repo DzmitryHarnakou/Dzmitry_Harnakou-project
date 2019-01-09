@@ -54,6 +54,12 @@ export class MovieDbEffects {
     return this._localStorageService.getTvShowListFromLocalStorage();
   }
 
+  async setNewItemToLocalStorage(action:any) {
+    this._localStorageService.setMovieToLocalStorage(action.payload);
+    this._localStorageService.addNewFilesToLocal(action);
+    return this.getMovieFromLocal();
+  }
+
   @Effect ()
   public setMovieToLocalStorage$ = this.actions$.pipe(
   ofType(movieDbActions.MovieDbActionTypes.SetMovieListToLocalStorage),
@@ -105,6 +111,14 @@ export class MovieDbEffects {
     this.removeTvShowfromLocal(action.payload)).pipe(
     map((resultArray:any)=> new movieDbActions.GetTvShowListFromLocalStorageSucsess(resultArray
     ), catchError(err => err)))));
+
+    @Effect ()
+    public addMovie$ =this.actions$.pipe(
+      ofType(movieDbActions.MovieDbActionTypes.AddMovie),
+      switchMap(( action: movieDbActions.AddMovie ) => from(
+      this.setNewItemToLocalStorage(action)).pipe(
+      map((resultArray:any)=> new movieDbActions.GetMovieListFromLocalStorage(
+      ), catchError(err => err)))));
 }
 
  

@@ -5,5 +5,11 @@
     padding-right: 0.5em;
     padding-left: 0.5em;
     font-size: 1em;
+    text-decoration: underline;
+    cursor: pointer;
+    user-select: none;
+}
 
+.active-header__link{
+    color: red;
 }

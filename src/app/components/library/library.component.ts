@@ -6,6 +6,7 @@ import { apiUrl } from "../../services/api.config";
 import { MovieListItem } from 'src/app/store/models/movie-list-item';
 import { TvShowListItem } from 'src/app/store/models/tv-show-list-item';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-library',
@@ -14,54 +15,32 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
 })
 export class LibraryComponent implements OnInit {
 
-  faBook = faBook;
+  private faBook:any = faBook;
 
   public apiImgUrl: string = apiUrl.imageUrl;
 
-  public tvShowList$ = this.store.select(s=>s.movieDb.localTvShowList);
+  public tvShowList$:Observable<TvShowListItem[]> = this.store.select(s=>s.movieDb.localTvShowList);
   
-  public filmsList$ = this.store.select(s=>s.movieDb.localMovieList);
-
+  public filmsList$:Observable<MovieListItem[]> = this.store.select(s=>s.movieDb.localMovieList);
+  
   public constructor(private store:Store<fromRoot.State>) {}
-
-  public showMov:boolean = false;
-  public showMovVal: MovieListItem;
-  public showShow:boolean = false;
-  public showShowVal: TvShowListItem;
 
   public removeMovie(item:MovieListItem) {
     this.store.dispatch(new movieDbActions.RemoveMovie(item));
+    return false;
   }
 
   public removeTvShow(item:TvShowListItem) {
     this.store.dispatch(new movieDbActions.RemoveTvShow(item));
+    return false;
   }
 
-  public showMovie(val:MovieListItem) {
-    if (this.showMov === true) {
-      this.showMov = false;
-    } else {
-      this.showMov = true;
-    }
-    this.showMovVal = val;
-  }
-
-  public showTvShow(val:TvShowListItem) {
-    if (this.showShow === true) {
-      this.showShow = false;
-    } else {
-      this.showShow= true;
-    }
-    this.showShowVal = val;
+  public subscribeItem(item:MovieListItem | TvShowListItem) {
+    this.store.dispatch(new movieDbActions.LibrarySubscribe(item));
   }
   
   ngOnInit() {
     this.store.dispatch(new movieDbActions.GetMovieListFromLocalStorage());
     this.store.dispatch(new movieDbActions.GetTvShowListFromLocalStorage());
   }
-
-  removeItem() {
-    
-  }
-
 }

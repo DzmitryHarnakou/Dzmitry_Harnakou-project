@@ -6,6 +6,7 @@
     <div class="header__container">
       <app-header></app-header>
     </div>
+      <app-add-movie *ngIf="showAddMovie$ | async"></app-add-movie>
       <router-outlet></router-outlet>
   </div>
 </div>

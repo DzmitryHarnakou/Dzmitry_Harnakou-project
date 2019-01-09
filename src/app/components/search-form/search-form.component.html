@@ -1,35 +1,25 @@
-<form cdkDrag class="search-form search_form__container">
+<form cdkDrag appClickOutside (clickOutside) = "clickOutside($event)" class="search-form search_form__container">
   <div class="search_form__content-container">
 
     <h2 class="search_form__header">
       Advanced search
     </h2>
 
-    <div class="search-form__input-container">
-
-      <div class="search-form__title-container">
-        <label class="search-form__title-label">Title</label>
-        <input type="text" name="title" [(ngModel)]="_searchFormService.title" class="search-form__title-input"
-          placeholder="title">
-      </div>
-
-      <div class="search-form__title-container">
-        <label class="search-form__overview-label">Overview</label>
-        <textarea rows="4" placeholder="Overview" name="overview" [(ngModel)]="_searchFormService.overview" class="search-form__overview-input"></textarea>
-      </div>
-
-    </div>
+    <app-form-text-iputs class="search-form-iputs__container"
+                         (titleValue) = "titleValue($event)"
+                         (overviewValue) = "overviewValue($event)"
+                         [titleIsValid] = "isValid"
+                         [overviewIsValid] = "isValid"></app-form-text-iputs>
 
     <div class="search-form__progress-container">
       <app-checkbox [label]="'Adult'" (boolValue)='adultValue($event)'></app-checkbox>
       <app-progressbar [label]="'Popularity'" (getCurValue)="popularity($event)"></app-progressbar>
       <app-progressbar [label]="'Vote average'" (getCurValue)="voteAverage($event)"></app-progressbar>
     </div>
+
     <div class="search-form__labels-button-container">
-      <div class="search-form__labels-container">
-        <app-checkbox [label]="label.text" [genre_id]=label.genre_id (getGenreId)="_searchFormService.getGenreId($event)"
-          *ngFor='let label of labels' class="search-form__labels-container-item"></app-checkbox>
-      </div>
+     
+      <app-form-labels (genreId) = "getGenreIds($event)" class="search-form-labels__container"></app-form-labels>
 
       <div class="search-form__button-container">
         <app-checkbox [label]="'Remember inputs'" (boolValue) = rememberImputs($event)></app-checkbox>

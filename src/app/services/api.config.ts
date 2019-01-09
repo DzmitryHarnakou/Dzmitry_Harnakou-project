@@ -9,3 +9,7 @@ export const apiUrl = {
 export function getMovieSearcLink (adult:boolean, title:string, overview: string, page: number) {
     return  "https://api.themoviedb.org/3/search/movie?api_key=7b4fdbd696ddc786e777b7dea10a4b36&language=en-US&query="+title.replace( /\s/g, "%20").toLocaleLowerCase()+"%20"+overview.replace( /\s/g, "%20").toLocaleLowerCase()+"&page="+String(page)+"&include_adult="+adult;
 }
+
+export function getTvShowSearchLink (title:string, overview: string, page: number) {
+    return "https://api.themoviedb.org/3/search/tv?api_key=7b4fdbd696ddc786e777b7dea10a4b36&language=en-US&query="+title.replace( /\s/g, "%20").toLocaleLowerCase()+"%20"+overview.replace( /\s/g, "%20").toLocaleLowerCase()+"&page="+String(page);
+}

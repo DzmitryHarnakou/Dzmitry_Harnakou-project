@@ -1,0 +1,9 @@
+<div class="search-form__labels-container">
+    <app-checkbox class="search-form__labels-container-item"
+                  *ngFor = "let label of labels" 
+                  [label] = "label.text"  
+                  [genre_id] = "label.genre_id"
+                  (getGenreId) = "getGenreId($event)">
+                </app-checkbox>
+</div>
+

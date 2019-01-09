@@ -54,6 +54,31 @@ export function reducer(state = initialState, action: tvShowListActions.TvShowLi
       ...state,
     };
 
+    case tvShowListActions.TvShowListActionTypes.SearchTvShow:
+    return state;
+
+    case tvShowListActions.TvShowListActionTypes.SearchTvShowSucsess:
+    return {
+      ...state,
+      tvShowResults: action.payload.results,
+    }
+
+    case tvShowListActions.TvShowListActionTypes.LoadNextSearchPage:
+    return state;
+
+    case tvShowListActions.TvShowListActionTypes.LoadNextSearchPageSucsess:
+    const itemList:TvShowListItem[] = action.payload.results;
+    const updatedItemList:TvShowListItem[] = state.tvShowResults.concat(itemList);
+    return {
+      ...state,
+      tvShowResults: updatedItemList,
+    };
+
+    case tvShowListActions.TvShowListActionTypes.LoadNextSearchPageEror:
+    return {
+      ...state,
+    }
+    
     default:
       return state;
    };

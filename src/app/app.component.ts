@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromRoot from './store/reducers/index';
+import { Router, Event } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   
-  public constructor() {}
+  public constructor(private store:Store<fromRoot.State>) {}
+
+  showAddMovie$ = this.store.select(s => s.movieDb.ShowAddMovie);
 
   ngOnInit() {
   }

@@ -1,0 +1,22 @@
+<div class="file-loader__container">
+  <label for="file-loader" class="file-loader__button">
+    <fa-icon [icon]="faUpload" class="file-loader__button-icon">
+    </fa-icon>
+    <span class="file-loader__button-text">
+      Upload posters
+    </span>
+  </label>
+  <input type="file" accept="image/x-png,image/gif,image/jpeg" #fileloader multiple (change)="detectFiles($event)" id="file-loader">
+  <div class="file-loader__file-container">
+    <div class="file-loader__img-container" *ngFor="let url of urls">
+      <img class="file-loader__image" [src]="url">
+      <div class="file-loader__progress-container">
+        <div class="file-loader__progress-mesure" [style.width]="width">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="search-form__validation-text" *ngIf="!fileloader.files.length">
+  Upload 1 poster as minimum
+</p>

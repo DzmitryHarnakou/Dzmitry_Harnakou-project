@@ -1,0 +1,24 @@
+<div class="search-form-input">
+
+    <div class="search-form__title-container">
+      <label class="search-form__title-label">Title</label>
+      <input type="text" [(ngModel)]="title" 
+                         name="title"  
+                         class="search-form__title-input" 
+                         placeholder="title"
+                         (keyup) = 'getTitleVal(title)'>
+                         <p class="search-form__validation-text" *ngIf = "!titleIsValid">Title is requred</p>
+    </div>
+    <div class="search-form__overview-container">
+      <label class="search-form__overview-label">Overview</label>
+      <textarea rows="4" 
+                placeholder = "Overview"
+                [(ngModel)] = "overview"
+                (keyup) = "getOverviewVal(overview)"
+                name="overview"  
+                class="search-form__overview-input">
+      </textarea>
+      <p class="search-form__validation-text" *ngIf = "!overviewIsValid">Overview is required</p>
+    </div>
+
+  </div>

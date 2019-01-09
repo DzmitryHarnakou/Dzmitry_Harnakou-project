@@ -30,3 +30,15 @@
 .movie-list__in-library {
     font-size: 3em;
 }
+
+.item__button-delete {
+    position: relative;
+    bottom:2em;
+    left: 1.5em;
+    width: 0.5em;
+    height: 0.5em;
+}
+
+.item__button-delete:hover {
+    color: rgb(92, 92, 92);
+}

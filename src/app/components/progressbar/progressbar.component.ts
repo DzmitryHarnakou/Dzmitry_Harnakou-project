@@ -7,21 +7,21 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ProgressbarComponent implements OnInit {
 
-  @Input () label:string;
-  @Output () getCurValue = new EventEmitter ();
-  value:string;
-  color:string;
+  @Input () private label:string;
+  @Output () public getCurValue = new EventEmitter<number> ();
+  private value:string;
+  private color:string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  getValue(evt: MouseEvent){
+  private getValue(evt: MouseEvent){
     this.getCurValue.emit((evt.offsetX)/2);
   }
 
-  changeValue(evt: MouseEvent){
+  private changeValue(evt: MouseEvent){
     this.value = String((evt.offsetX)/2)+'%';
     if (evt.offsetX<=100){
       this.color = 'rgb('+evt.offsetX*2.55+', 255, 0)';

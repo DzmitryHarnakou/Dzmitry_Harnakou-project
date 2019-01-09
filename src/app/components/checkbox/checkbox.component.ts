@@ -8,29 +8,27 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 })
 export class CheckboxComponent implements OnInit{
 
-  private value:boolean = false; 
-  @Input () label:string;
-  @Input () genre_id:number;
-  @Output () getGenreId = new EventEmitter ();
-  @Output () boolValue = new EventEmitter (); 
+  private value: boolean = false; 
+  private faCheck:any = faCheck;
 
-  emitId() {
+  constructor() { }
+  @Input () private label:string;
+  @Input () private genre_id:number;
+  @Output () public getGenreId = new EventEmitter<number> ();
+  @Output () public boolValue: any = new EventEmitter<boolean> ();
+
+  private emitId() {
       this.getGenreId.emit(this.genre_id);
   }
 
-  emitVal(val: boolean) {
-    if (val === false){
-      val = true;
+  private emitBoolVal(value:boolean) {
+    if (value) {
+      this.boolValue.emit(false);
     } else {
-      val = false;
+      this.boolValue.emit(true);
     }
-    this.boolValue.emit(val);
   }
   
-  faCheck = faCheck;
-
-  constructor() { }
-
   ngOnInit() {
   }
 

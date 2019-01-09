@@ -5,16 +5,12 @@ export interface State {
   movieResults: MovieListItem[];
   isInLib: boolean[];
   isItemInLib: boolean;
-  
-  searchResults: MovieListItem[];
 }
 
 export const initialState: State = {
   movieResults: [],
   isInLib: [],
   isItemInLib: null,
-
-  searchResults: [],
 };
 
 export function reducer(state = initialState, action: filmListActions.FilmListActions): State {
@@ -55,24 +51,30 @@ export function reducer(state = initialState, action: filmListActions.FilmListAc
       ...state,
     };
 
-    case filmListActions.FilmListActionTypes.SearchForm:
+    case filmListActions.FilmListActionTypes.SearchFilms:
     return state;
 
-    case filmListActions.FilmListActionTypes.GetSearchDataSucsess:
+    case filmListActions.FilmListActionTypes.SearchFilmsSucsess:
     return {
       ...state,
-      movieResults: action.payload,
+      movieResults: action.payload.results,
+    }
+
+    case filmListActions.FilmListActionTypes.LoadNextSearchPage:
+    return state;
+
+    case filmListActions.FilmListActionTypes.LoadNextSearchPageSucsess:
+    const itemList:MovieListItem[] = action.payload.results;
+    const updatedItemList:MovieListItem[] = state.movieResults.concat(itemList);
+    return {
+      ...state,
+      movieResults: updatedItemList,
     };
 
-    case filmListActions.FilmListActionTypes.GetNextSearchPage:
-    return state;
-
-    case filmListActions.FilmListActionTypes.GetNextSearchPageSucsess:
-    const newArr:MovieListItem[] = state.movieResults.concat(action.payload); 
+    case filmListActions.FilmListActionTypes.LoadNextSearchPageEror:
     return {
       ...state,
-      movieResults: newArr,
-    } 
+    }
 
     default:
       return state;

@@ -24,6 +24,13 @@ export enum MovieDbActionTypes {
 
     IsMovieInLibrary = '[MovieDb] IsMovieInLibrary',
     IsTvShowInLibrary = '[MovieDb] IsTvShowInLibrary',
+
+    LibrarySubscribe = '[MovieDb] LibrarySubscribe',
+
+    ToggleAddMovie = '[MovieDb] ToggleAddMovie',
+    HideAddMovie = '[MovieDb] HideAddMovie',
+
+    AddMovie = '[MovieDb] AddMovie',
 }
 
 
@@ -52,8 +59,6 @@ export class SetMovieListToLocalStorageSucsess implements Action {
     constructor (public payload:MovieListItem[]) {}
 }
 
-
-
 export class GetMovieListFromLocalStorage implements Action {
     readonly type = MovieDbActionTypes.GetMovieListFromLocalStorage;
 
@@ -77,8 +82,6 @@ export class SetTvShowListToLocalStorageSucsess implements Action {
     constructor (public payload:TvShowListItem[]) {}
 }
 
-
-
 export class GetTvShowListFromLocalStorage implements Action {
     readonly type = MovieDbActionTypes.GetTvShowListFromLocalStorage;
 
@@ -89,7 +92,6 @@ export class GetTvShowListFromLocalStorageSucsess implements Action {
 
     constructor (public payload:TvShowListItem[]) {}
 }
-
 
 export class RemoveMovie implements Action {
     readonly type = MovieDbActionTypes.RemoveMovie;
@@ -111,6 +113,25 @@ export class IsTvShowInLibrary implements Action {
     readonly type = MovieDbActionTypes.IsTvShowInLibrary;
 }
 
+export class LibrarySubscribe implements Action {
+    readonly type = MovieDbActionTypes.LibrarySubscribe;
+
+    constructor (public payload:any) {}
+}
+
+export class ToggleAddMovie implements Action {
+    readonly type = MovieDbActionTypes.ToggleAddMovie;
+}
+
+export class HideAddMovie implements Action {
+    readonly type = MovieDbActionTypes.HideAddMovie;
+}
+
+export class AddMovie implements Action {
+    readonly type = MovieDbActionTypes.AddMovie;
+
+    constructor (public payload:any, public file:any) {}
+}
 
 export type MovieDbActions = 
   | SubscribeMovie
@@ -134,3 +155,8 @@ export type MovieDbActions =
 
   | IsMovieInLibrary
   | IsTvShowInLibrary
+  | LibrarySubscribe
+
+  | ToggleAddMovie
+  | HideAddMovie
+  | AddMovie

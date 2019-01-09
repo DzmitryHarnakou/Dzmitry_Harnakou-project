@@ -22,3 +22,10 @@ box-shadow: 0px 0px 1px 1px white;
     width: 10em;
     user-select: none;
 }
+
+@media (max-width: 600px) {
+    .side-naigation-bar-item__text {
+       display: none;
+    }
+
+}

@@ -1,28 +1,40 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchFormService } from '../../services/search-form.service';
-
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/reducers/index'
+import * as filmListActions from '../../store/actions/film-list.actions';
+import * as tvShowListActions from '../../store/actions/tv-shows-list.actions';
 
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.css']
 })
-export class SearchFormComponent implements OnInit, OnDestroy {
+export class SearchFormComponent implements OnInit {
 
-  private adult:boolean = false;
+  constructor(private _searchFormService: SearchFormService,
+              private store:Store<fromRoot.State>) { }
 
-  
+  private isValid:boolean = true;
+              
+  private clickOutside() {
+    this._searchFormService.toggle();
+  }
 
-  constructor(private _searchFormService: SearchFormService) { }
+  private titleValue(title:string) {
+    this._searchFormService.title = title;
+  }
 
-  private labels = this._searchFormService.genres;
-
-  private submit() {
-    this._searchFormService.submit();
+  private overviewValue(overview:string) {
+    this._searchFormService.overview = overview;
   }
 
   private adultValue(val:boolean) {
-    this._searchFormService.adult = val;
+   this._searchFormService.adult = val;
+  }
+
+  private getGenreIds(id:number) {
+    this._searchFormService.getGenreId(id);
   }
 
   private popularity(popVal: number) {
@@ -30,18 +42,27 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   }
 
   private voteAverage(voteVal: number) {
-    this._searchFormService.vote_average = voteVal/10;
+    this._searchFormService.vote_average = voteVal;
   }
 
   private rememberImputs(remVal: boolean) {
     this._searchFormService.remember_inputs = remVal;
   }
-
-  ngOnDestroy() {
-    this._searchFormService.setDefault ();
+  
+  private submit() {
+    this._searchFormService.submited = true;
+    if (window.location.pathname === "/movie") 
+    { 
+      this.store.dispatch(new filmListActions.SearchFilms(this._searchFormService));
+    } 
+    if (window.location.pathname === "/tv%23shows") {
+      this.store.dispatch(new tvShowListActions.SearchTvShow(this._searchFormService));
+    }
+    this._searchFormService.toggle();
   }
 
   ngOnInit() {
+    this._searchFormService.setDefault();
   }
 
 }

@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SideNavigationBarItemComponent implements OnInit {
   
-  @Input () navIcon:any;
-  @Input () showText:boolean;
-  @Input () navItemText:string;
+  @Input () private navIcon:any;
+  @Input () private showText:boolean;
+  @Input () private navItemText:string;
 
   constructor() { }
 

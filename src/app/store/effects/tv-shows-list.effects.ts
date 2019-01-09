@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { AxiosDmitryService } from '../../services/axios-dmitry.service';
 import {  map, catchError, switchMap } from 'rxjs/operators';
-import { apiUrl } from '../../services/api.config';
+import { apiUrl, getTvShowSearchLink } from '../../services/api.config';
 import { of, from } from 'rxjs';
 import * as tvShowListAction from '../actions/tv-shows-list.actions';
 import { LocalStorageService } from '../../services/local-storage.service';
@@ -16,12 +16,13 @@ export class TvShowListEffects {
               private _localStorageService: LocalStorageService) {}
 
   private n: number = 1;
+  private formState:any;
 
-  getTvShowFromLocal() {
+  private getTvShowFromLocal() {
     return this._localStorageService.getTvShowListFromLocalStorage();
   }
 
-  sort(items) {
+  private sort(items:any) {
     let isInLib:boolean[] = [];
     
     for (var i = 0; i < items.results.length; i++) {
@@ -44,15 +45,31 @@ export class TvShowListEffects {
   }
 
 
-  getShowList () {
+  private getShowList () {
     this.n = 1;
     return this.axiosDmitryService.getRequest(apiUrl.showUrl+String(this.n)).then(resp =>resp).catch(err => err);
   }
 
-  loadNextPage () {
+  private loadNextPage () {
     this.n++;
     return this.axiosDmitryService.getRequest(apiUrl.showUrl+String(this.n)).then(resp =>resp).catch(err => err);
   }
+
+  private getSearchResults(action:any) {
+    this.formState = action.payload;
+    this.n = 1;
+    var link:string = getTvShowSearchLink(this.formState.title, this.formState.overview, this.n);
+    var data = this.axiosDmitryService.getRequest(link).then(resp => resp).catch(err => err);
+    return data;
+}
+
+private getNextSearchResults() {
+  this.n++;
+  var link:string = getTvShowSearchLink(this.formState.title, this.formState.overview, this.n);
+  var data = this.axiosDmitryService.getRequest(link).then(resp => resp).catch(err => err);
+  return data;
+}
+
 
   @Effect ()
   public loadTvShowList$ = this.actions$.pipe(ofType(tvShowListAction.TvShowListActionTypes.LoadTvShowList),
@@ -63,5 +80,15 @@ export class TvShowListEffects {
   public loadNextPage$ = this.actions$.pipe(ofType(tvShowListAction.TvShowListActionTypes.LoadNextPage),
   switchMap(() => from(this.loadNextPage ()).pipe(map((tvShowList)=> new tvShowListAction.LoadNextPageSucsess(this.sort(tvShowList))),
   catchError(() => of(new tvShowListAction.LoadNextPageError("Can't load((("))))))
+
+  @Effect ()
+  public getSearchResults$ = this.actions$.pipe(ofType(tvShowListAction.TvShowListActionTypes.SearchTvShow),
+  switchMap((payload) => from(this.getSearchResults(payload)).pipe(map((searchData)=> new tvShowListAction.SearchTvShowSucsess(searchData)),
+  catchError(() => of(new tvShowListAction.SearchTvShowEror("Can't load((("))))))
+
+  @Effect ()
+  public getNextSearchResults$ = this.actions$.pipe(ofType(tvShowListAction.TvShowListActionTypes.LoadNextSearchPage),
+  switchMap(() => from(this.getNextSearchResults()).pipe(map((searchData)=> new tvShowListAction.LoadNextSearchPageSucsess(searchData)),
+  catchError(() => of(new tvShowListAction.LoadNextSearchPageEror("Can't load((("))))))
 }
 

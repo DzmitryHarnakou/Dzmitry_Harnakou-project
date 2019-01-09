@@ -1,0 +1,33 @@
+  <div class="add-movie add-movie__container">
+    <div class="add-movie__content-container">
+      <div class="form-text-iputs__container">
+        <h2 class="search_form__header">
+          Add movie
+        </h2>
+        <app-form-text-iputs  (titleValue) = "titleValue($event)"
+                              (overviewValue) = "overviewValue($event)"
+                              [titleIsValid] = "title"
+                              [overviewIsValid] = "overview"
+                              ></app-form-text-iputs>
+      </div>
+      <div class="form-labels__container">
+        <span class="form-labels__header">Genres</span>
+        <div class="form-labels__container-item">
+          <app-form-labels  (genreId) = getGenreId($event)></app-form-labels>
+          <p class="search-form__validation-text" *ngIf = "!genreIds.length">Genre is required</p>
+        </div>
+        <app-checkbox [label]="'Adult'" (boolValue)='adultValue($event)' class="form-label__adult"></app-checkbox>
+      </div>
+      <div class="add-movie__file-loader-container">
+        <app-file-loader  class=""
+                          (emitFiles) = "getFiles($event)"></app-file-loader>
+        <div class="add-movie__button-container">
+          <input type="submit" value="Add" (click) = "submit()" class="add-movie__button-add">
+          <input type="button" value="cancel" (click) = "onCancel()" class="add-movie__button-cancel">
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="alert-menu" *ngIf = "showMenu">
+  <span class="alert-menu__text">Fill all required fields</span>
+</div>

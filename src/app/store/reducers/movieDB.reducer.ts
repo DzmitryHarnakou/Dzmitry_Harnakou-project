@@ -12,6 +12,10 @@ localTvShowList: TvShowListItem[];
 
 isMovieInLib: boolean;
 isTvShowInLib: boolean;
+
+librarySubscribe: any;
+
+ShowAddMovie: boolean;
 }
    
 export const initialState: State = {
@@ -23,6 +27,10 @@ export const initialState: State = {
 
   isMovieInLib: null,
   isTvShowInLib: null,
+
+  librarySubscribe: null,
+
+  ShowAddMovie: false,
 };
 
 export function reducer(state = initialState, action: movieDbActions.MovieDbActions): State {
@@ -104,6 +112,33 @@ export function reducer(state = initialState, action: movieDbActions.MovieDbActi
         ...state,
         isTvShowInLib: tvShowVal,
       };
+
+      case movieDbActions.MovieDbActionTypes.LibrarySubscribe:
+      return {
+        ...state,
+        librarySubscribe: action.payload,
+      }
+
+      case movieDbActions.MovieDbActionTypes.ToggleAddMovie:
+      let updRes:boolean;
+      if (state.ShowAddMovie === false) {
+        updRes = true;
+      } else {
+        updRes = false;
+      }
+      return {
+        ...state,
+        ShowAddMovie: updRes,
+      }
+
+      case movieDbActions.MovieDbActionTypes.HideAddMovie:
+      return {
+        ...state,
+        ShowAddMovie: false,
+      }
+
+      case movieDbActions.MovieDbActionTypes.AddMovie:
+      return state;
 
       default:
         return state;

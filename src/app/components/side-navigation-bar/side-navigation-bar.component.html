@@ -12,3 +12,12 @@
                                 *ngFor="let i of _navigationServise.items; let l = index"
                                 [routerLink]="routerLink[l].path">
 </app-side-navigation-bar-item>
+<app-side-navigation-bar-item [navIcon] = "_navigationServise.headerNavItems[0].icon"
+                              class="navigation-bar__items-mobile"
+                              (click) = "showAddMovie()"
+                              >
+</app-side-navigation-bar-item> 
+<app-side-navigation-bar-item [navIcon] = "_navigationServise.headerNavItems[1].icon"
+                              class="navigation-bar__items-mobile"
+                              [routerLink] = "routerLink[4].path">
+</app-side-navigation-bar-item> 

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faSearch, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import { SearchFormService } from '../../services/search-form.service';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/reducers/index'
+import * as filmListActions from '../../store/actions/film-list.actions';
+import * as tvShowListActions from '../../store/actions/tv-shows-list.actions';
 
 @Component({
   selector: 'app-search-item',
@@ -9,11 +13,27 @@ import { SearchFormService } from '../../services/search-form.service';
 })
 export class SearchItemComponent implements OnInit {
 
-  faSearch = faSearch;
+  private faSearch:any = faSearch;
 
-  constructor(private _searchFormService:SearchFormService) { }
+  constructor(private _searchFormService:SearchFormService,
+              private store:Store<fromRoot.State>) { }
 
-  toggle () {
+  private getValue(inputValue:string) {
+    this._searchFormService.title = inputValue;
+  }
+
+  private searchItems() {
+    this._searchFormService.submited = true;
+    if (window.location.pathname === "/movie") 
+    { 
+      this.store.dispatch(new filmListActions.SearchFilms(this._searchFormService));
+    } 
+    if (window.location.pathname === "/tv%23shows") {
+      this.store.dispatch(new tvShowListActions.SearchTvShow(this._searchFormService));
+    }
+  }
+
+  private toggle () {
     this._searchFormService.toggle();
   }
 

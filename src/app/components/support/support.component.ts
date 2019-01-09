@@ -7,7 +7,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./support.component.css']
 })
 export class SupportComponent implements OnInit {
-  faUserCircle = faUserCircle;
+  private faUserCircle:any = faUserCircle;
 
   constructor() { }
 

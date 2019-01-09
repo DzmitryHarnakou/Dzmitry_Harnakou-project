@@ -4,6 +4,7 @@ import { apiUrl } from '../../services/api.config';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { MovieListItem } from '../../store/models/movie-list-item';
 import { TvShowListItem } from '../../store/models/tv-show-list-item';
+import { SearchFormService } from '../../services/search-form.service';
 
 
 @Component({
@@ -16,17 +17,20 @@ export class SubscribeItemWindowComponent implements OnInit {
 
   faTimes:object = faTimes;
 
-  @Input () itemDescribtion: MovieListItem | TvShowListItem;
-  @Input () isItemInLibrary: boolean;
+  @Input () private itemDescribtion: MovieListItem | TvShowListItem;
+  @Input () private isItemInLibrary: boolean;
+  @Input () private showbutton: boolean;
 
-  @Output () setItemToLocal = new EventEmitter ();
+  @Output () setItemToLocal = new EventEmitter<MovieListItem | TvShowListItem> ();
 
   public apiImgUrl: string = apiUrl.imageUrl;
   public buttonValue: string;
+  
 
-  public constructor(private location:Location) {}
+  public constructor(private location:Location,
+                    private _searchFormService: SearchFormService) {}
 
-  goBack(): void {
+  private goBack() {
     this.location.back();
   }
 
@@ -39,4 +43,5 @@ export class SubscribeItemWindowComponent implements OnInit {
       this.buttonValue = "In Library";
     } else{this.buttonValue = "Add To Library"}
   }
+
 }

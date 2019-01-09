@@ -1,0 +1,14 @@
+.search-form__labels-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid rgb(92, 92, 92);
+    border-radius: 0.5em;
+    padding-left: 0.5em;
+  }
+  
+  .search-form__labels-container-item{
+    width: 50%;
+    box-sizing: border-box;
+  }
+  

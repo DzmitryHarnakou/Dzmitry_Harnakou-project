@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { TvShowListItem } from '../models/tv-show-list-item';
+import { TvShowData } from '../models/tv-show-data';
 
 export enum TvShowListActionTypes {
   LoadTvShowList = '[TvShowList] LoadTvShowList',
@@ -11,6 +12,13 @@ export enum TvShowListActionTypes {
   LoadNextPageSucsess = '[TvShowList] LoadNextPageSucsess',
   LoadNextPageError = '[TvShowList] LoadNextPageError',
 
+  SearchTvShow = '[TvShowList] SearchTvShow',
+  SearchTvShowSucsess = '[TvShowList] SearchTvShowSucsess',
+  SearchTvShowEror = '[TvShowList] SearchTvShowEror',
+
+  LoadNextSearchPage = '[TvShowList] LoadNextSearchPage',
+  LoadNextSearchPageSucsess = '[TvShowList] LoadNextSearchPageSucsess',
+  LoadNextSearchPageEror = '[TvShowList] LoadNextSearchPageEror',
 }
 
 export class LoadTvShowList implements Action {
@@ -50,6 +58,37 @@ export class LoadNextPageError implements Action {
   readonly type = TvShowListActionTypes.LoadNextPageError;
   constructor (public payload:any) {}
 }
+
+export class SearchTvShow implements Action {
+  readonly type = TvShowListActionTypes.SearchTvShow;
+  constructor (public payload: any) {}
+}
+
+export class SearchTvShowSucsess implements Action {
+  readonly type = TvShowListActionTypes.SearchTvShowSucsess;
+  constructor (public payload:TvShowData) {}
+}
+
+export class SearchTvShowEror implements Action {
+  readonly type = TvShowListActionTypes.SearchTvShow;
+  constructor (public payload: string) {}
+}
+
+export class LoadNextSearchPage implements Action {
+  readonly type = TvShowListActionTypes.LoadNextSearchPage;
+  constructor () {}
+}
+
+export class LoadNextSearchPageSucsess implements Action {
+  readonly type = TvShowListActionTypes.LoadNextSearchPageSucsess;
+  constructor (public payload: TvShowData) {}
+}
+
+export class LoadNextSearchPageEror implements Action {
+  readonly type = TvShowListActionTypes.LoadNextSearchPageEror;
+  constructor (public payload: string) {}
+}
+
 export type TvShowListActions = 
   | LoadTvShowList
   | LoadTvShowListSucsess
@@ -58,4 +97,10 @@ export type TvShowListActions =
   | LoadNextPage
   | LoadNextPageSucsess
   | LoadNextPageError
+  | SearchTvShow
+  | SearchTvShowSucsess
+  | SearchTvShowEror
+  | LoadNextSearchPage
+  | LoadNextSearchPageSucsess
+  | LoadNextSearchPageEror
 

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
 }
-
+ 
 .side-navigation-bar__container {
     width: max-content;
     height: 100vh;

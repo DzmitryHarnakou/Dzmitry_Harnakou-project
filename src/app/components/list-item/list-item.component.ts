@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { faBook, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { apiUrl } from '../../services/api.config';
+
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
@@ -8,13 +9,14 @@ import { apiUrl } from '../../services/api.config';
 })
 export class ListItemComponent implements OnInit {
 
-  faBook = faBook;
+  private faBook: any= faBook;
+  private faTimes: any = faTimes;
+
   @Input () private imgUrl:string;
   @Input () private isInLibrary:boolean;
   @Input () private itemTitle:string;
-  constructor() { }
-
   
+  constructor() { }
 
   ngOnInit() {    
     if (~this.imgUrl.indexOf("null")) {

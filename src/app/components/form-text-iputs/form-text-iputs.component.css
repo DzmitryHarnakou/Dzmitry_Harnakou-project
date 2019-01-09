@@ -1,0 +1,37 @@
+.search-form-input {
+  height: max-content;
+}
+
+.search-form__title-input {
+  border-radius: 3px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.7em;
+  margin-bottom: 0.6em;
+}
+
+.search-form__overview-input {
+  border-radius: 3px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.7em;
+}
+
+.search-form__title-label {
+  font-size: 0.7em;
+}
+
+.search-form__overview-label {
+  font-size: 0.7em;
+}
+
+.search-form__validation-text {
+  color: red;
+  font-size: 0.6em;
+  position: absolute;
+}
+
+.search-form__overview-container{
+  margin-top: 0.7em;
+  margin-bottom: 1em;
+}

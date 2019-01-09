@@ -1,6 +1,7 @@
 <div class="scroll-top__container">
   <app-scroll-top (click) = "scrollContainer.scrollTop = 0"></app-scroll-top>
-  <div class="movie-list__container"  #scrollContainer 
+  <div class="movie-list__container"  [style.height] = "(showAddMovie$ | async) ? '60vh' : '90vh'"
+                                      #scrollContainer 
                                       infiniteScroll 
                                       [infiniteScrollDistance]="2" 
                                       [infiniteScrollThrottle]="50"

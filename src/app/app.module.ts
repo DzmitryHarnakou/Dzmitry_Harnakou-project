@@ -35,9 +35,13 @@ import { LocalStorageService } from './services/local-storage.service';
 import { MovieDbEffects } from './store/effects/movieDB.effects';
 import { SearchFormService } from './services/search-form.service';
 import { SupportComponent } from './components/support/support.component';
-import { SearchService } from './services/search.service'
-
-
+import { AddMovieComponent } from './components/add-movie/add-movie.component';
+import { FormTextIputsComponent } from './components/form-text-iputs/form-text-iputs.component';
+import { FormLabelsComponent } from './components/form-labels/form-labels.component';
+import { FileLoaderComponent } from './components/file-loader/file-loader.component';
+import { AboutComponent } from './components/about/about.component';
+import { SubscribeLibraryComponent } from './components/subscribe-library/subscribe-library.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,13 @@ import { SearchService } from './services/search.service'
     SubscribeMovieComponent,
     SubscribeTvShowComponent,
     SupportComponent,
+    AddMovieComponent,
+    FormTextIputsComponent,
+    FormLabelsComponent,
+    FileLoaderComponent,
+    AboutComponent,
+    SubscribeLibraryComponent,
+    ClickOutsideDirective,
   ],
   imports: [
     FormsModule,
@@ -71,7 +82,7 @@ import { SearchService } from './services/search.service'
     EffectsModule.forRoot([FilmsListEffects, TvShowListEffects, MovieDbEffects]),
     InfiniteScrollModule,
   ],
-  providers: [NavigationService, LocalStorageService, SearchFormService, SearchService],
+  providers: [NavigationService, LocalStorageService, SearchFormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

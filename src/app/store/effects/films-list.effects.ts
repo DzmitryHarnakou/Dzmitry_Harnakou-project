@@ -6,23 +6,23 @@ import { apiUrl, getMovieSearcLink } from '../../services/api.config';
 import { of, from } from 'rxjs';
 import * as filmListActions from '../actions/film-list.actions';
 import { LocalStorageService } from '../../services/local-storage.service';
-import { SearchService } from '../../services/search.service';
+import { MovieData } from '../models/movie-data'
 
 @Injectable()
 export class FilmsListEffects {
 
   constructor(private actions$: Actions,
               private axiosDmitryService: AxiosDmitryService,
-              private _localStorageService: LocalStorageService,
-              private _searchService: SearchService) {}
+              private _localStorageService: LocalStorageService) {}
                          
   private n: number = 1;
+  private formState:any;
 
-  getMovieFromLocal() {
+  private getMovieFromLocal() {
     return this._localStorageService.getMovieListFromLocalStorage();
   }
 
-  sort(items) {
+  private sort(items:any) {
     let isInLib:boolean[] = [];
     
     for (var i = 0; i < items.results.length; i++) {
@@ -44,15 +44,30 @@ export class FilmsListEffects {
     }
   }
 
-  getFilmList () {
+  private getFilmList () {
     this.n = 1;
     return this.axiosDmitryService.getRequest(apiUrl.movieUrl+String(this.n)).then(resp =>resp).catch(err => err);
   }
 
-  loadNextPage () {
+  private loadNextPage () {
     this.n++;
     return this.axiosDmitryService.getRequest(apiUrl.movieUrl+String(this.n)).then(resp =>resp).catch(err => err);
   }
+
+  private getSearchResults(action) {
+      this.formState = action.payload;
+      this.n = 1;
+      var link:string = getMovieSearcLink(this.formState.adult, this.formState.title, this.formState.overview, this.n);
+      var data = this.axiosDmitryService.getRequest(link).then(resp => resp).catch(err => err);
+      return data;
+  }
+
+  private getNextSearchResults() {
+    this.n++;
+    var link:string = getMovieSearcLink(this.formState.adult, this.formState.title, this.formState.overview, this.n);
+    var data = this.axiosDmitryService.getRequest(link).then(resp => resp).catch(err => err);
+    return data;
+}
 
   @Effect ()
   public loadFilmsList$ = this.actions$.pipe(ofType(filmListActions.FilmListActionTypes.LoadFilmLists),
@@ -63,16 +78,15 @@ export class FilmsListEffects {
   public loadNextPage$ = this.actions$.pipe(ofType(filmListActions.FilmListActionTypes.LoadNextPage),
   switchMap(() => from(this.loadNextPage ()).pipe(map((moviePageData)=> new filmListActions.LoadNextPageSucsess(this.sort(moviePageData))),
   catchError(() => of(new filmListActions.LoadNextPageError("Can't load((("))))))
-  
-  @Effect ()
-  public searchResults$ = this.actions$.pipe(ofType(filmListActions.FilmListActionTypes.SearchForm),
-  switchMap(() => from(this._searchService.getSearchItems()).pipe(map((searchData)=> new filmListActions.GetSearchDataSucsess(searchData)),
-  catchError(()=> of(new filmListActions.LoadFilmListsError("Can't load((("))))))
 
   @Effect ()
-  public nextSearchResults$ = this.actions$.pipe(ofType(filmListActions.FilmListActionTypes.GetNextSearchPage),
-  switchMap(() => from(this._searchService.getNextSearchItems()).pipe(map((searchData)=> new filmListActions.GetNextSearchPageSucsess(searchData)),
-  catchError(()=> of(new filmListActions.LoadFilmListsError("Can't load((("))))))
-  
+  public getSearchResults$ = this.actions$.pipe(ofType(filmListActions.FilmListActionTypes.SearchFilms),
+  switchMap((payload) => from(this.getSearchResults(payload)).pipe(map((searchData)=> new filmListActions.SearchFilmsSucsess(searchData)),
+  catchError(() => of(new filmListActions.SearchFilmsEror("Can't load((("))))))
+
+  @Effect ()
+  public getNextSearchResults$ = this.actions$.pipe(ofType(filmListActions.FilmListActionTypes.LoadNextSearchPage),
+  switchMap(() => from(this.getNextSearchResults()).pipe(map((searchData)=> new filmListActions.LoadNextSearchPageSucsess(searchData)),
+  catchError(() => of(new filmListActions.LoadNextSearchPageEror("Can't load((("))))))
 }
 

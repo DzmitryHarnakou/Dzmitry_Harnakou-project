@@ -1,5 +1,5 @@
 <label  class="checkbox_position">
-    <input type="checkbox" class="check" [(ngModel)]="value" (click) = "emitId(); emitVal(value);">
+    <input type="checkbox" class="check" [(ngModel)]="value" (click) = "emitId(); emitBoolVal(value)">
     <div class="checkbox__field">
       <fa-icon [icon]="faCheck" class="checkbox__mark" *ngIf="value"></fa-icon>
     </div>

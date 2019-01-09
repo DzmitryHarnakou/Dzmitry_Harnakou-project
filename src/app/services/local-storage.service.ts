@@ -44,7 +44,7 @@ export class LocalStorageService {
   }
 
   public setTvShowToLocalStorage(tvShowItem:TvShowListItem) {
-    this.updatedTvShowList = [...this.getTvShowListFromLocalStorage(), tvShowItem]
+    this.updatedTvShowList = [...this.getTvShowListFromLocalStorage(), tvShowItem];
     localStorage.setItem('tvShowList', JSON.stringify(this.updatedTvShowList));
     return this.updatedTvShowList;
   }
@@ -52,6 +52,10 @@ export class LocalStorageService {
   public removeTvShowFromLocalStorage(tvShowItem:TvShowListItem) {
     this.updatedTvShowList = this.getTvShowListFromLocalStorage().filter(showItem => JSON.stringify(showItem) != JSON.stringify(tvShowItem));
     localStorage.setItem('tvShowList', JSON.stringify(this.updatedTvShowList));
+  }
+
+  public addNewFilesToLocal(action:any) {
+    localStorage.setItem(action.payload.title, action.file)
   }
   
   constructor() { }
