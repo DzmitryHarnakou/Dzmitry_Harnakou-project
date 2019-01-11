@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { labels } from '../../services/labels.config';
+import { Labels } from '../../store/models/labels';
 
 
 @Component({
@@ -9,13 +10,13 @@ import { labels } from '../../services/labels.config';
 })
 export class FormLabelsComponent implements OnInit {
 
-  @Output () public genreId: any = new EventEmitter<number> ();
+  @Output () public genreId: EventEmitter<number> = new EventEmitter ();
 
   constructor() { }
 
-  public labels:object[] = labels;
+  public labels:Labels[] = labels;
 
-  private getGenreId(genre:number) {
+  public getGenreId(genre:number):void {
     this.genreId.emit(genre);
   }
 

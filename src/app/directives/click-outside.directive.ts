@@ -10,17 +10,17 @@ export class ClickOutsideDirective {
   }
  
   @Output()
-  public clickOutside = new EventEmitter();
+  public clickOutside:EventEmitter<MouseEvent> = new EventEmitter();
   private count:number = 0;
 
   @HostListener('document:click', ['$event.target'])
-    public onClick(targetElement) {
+    public onClick(targetElement:EventTarget) {
       if (this._searchFormService.displayForm === "none") {
         this.count = 0;
       } else {
       this.count++;
       if (this.count >= 2) {
-      const clickedInside = this._elementRef.nativeElement.contains(targetElement);
+      const clickedInside:boolean = this._elementRef.nativeElement.contains(targetElement);
         if (!clickedInside) {
           this.clickOutside.emit(null);
           this.count = 0;

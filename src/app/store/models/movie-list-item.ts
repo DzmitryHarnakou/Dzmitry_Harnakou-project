@@ -2,13 +2,13 @@ export interface MovieListItem {
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
-    id: string;
+    id: number;
     original_language: string;
     original_title: string;
     overview: string;
     popularity: number;
     poster_path: string;
-    release_date: string;
+    release_date: Date;
     title: string;
     video: boolean;
     vote_average: number;

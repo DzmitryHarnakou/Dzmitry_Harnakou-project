@@ -9,7 +9,7 @@
                                       (scrolled)="onScroll()">
     <app-list-item  *ngFor="let i of (filmsList$ | async).movieResults; let l = index"
                     [itemTitle]='i.original_title'
-                    [imgUrl]="'url('+apiImgUrl+i.poster_path+')'"
+                    [imgUrl]="i.poster_path"
                     class="list-item list-item__container"
                     (click) = "getItem(i)"
                     routerLink = "/movie/details"

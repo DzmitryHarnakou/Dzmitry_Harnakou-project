@@ -19,7 +19,7 @@ export function reducer(state = initialState, action: filmListActions.FilmListAc
     case filmListActions.FilmListActionTypes.LoadFilmLists:
     return state;
 
-    case filmListActions.FilmListActionTypes.LoadFilmListsSucsess:
+    case filmListActions.FilmListActionTypes.LoadFilmListsSuccess:
     return {
       ...state,
       movieResults: action.payload.items.results,
@@ -32,7 +32,7 @@ export function reducer(state = initialState, action: filmListActions.FilmListAc
     case filmListActions.FilmListActionTypes.LoadNextPage:
     return state;
 
-    case filmListActions.FilmListActionTypes.LoadNextPageSucsess:
+    case filmListActions.FilmListActionTypes.LoadNextPageSuccess:
     const itemsList:MovieListItem[] = action.payload.items.results;
     const updatedList:MovieListItem[] = state.movieResults.concat(itemsList);
     const isInLibItems:boolean[] = action.payload.isInLib;
@@ -54,7 +54,7 @@ export function reducer(state = initialState, action: filmListActions.FilmListAc
     case filmListActions.FilmListActionTypes.SearchFilms:
     return state;
 
-    case filmListActions.FilmListActionTypes.SearchFilmsSucsess:
+    case filmListActions.FilmListActionTypes.SearchFilmsSuccess:
     return {
       ...state,
       movieResults: action.payload.results,
@@ -63,7 +63,7 @@ export function reducer(state = initialState, action: filmListActions.FilmListAc
     case filmListActions.FilmListActionTypes.LoadNextSearchPage:
     return state;
 
-    case filmListActions.FilmListActionTypes.LoadNextSearchPageSucsess:
+    case filmListActions.FilmListActionTypes.LoadNextSearchPageSuccess:
     const itemList:MovieListItem[] = action.payload.results;
     const updatedItemList:MovieListItem[] = state.movieResults.concat(itemList);
     return {
@@ -71,7 +71,7 @@ export function reducer(state = initialState, action: filmListActions.FilmListAc
       movieResults: updatedItemList,
     };
 
-    case filmListActions.FilmListActionTypes.LoadNextSearchPageEror:
+    case filmListActions.FilmListActionTypes.LoadNextSearchPageError:
     return {
       ...state,
     }

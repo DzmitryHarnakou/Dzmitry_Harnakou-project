@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { faUpload} from '@fortawesome/free-solid-svg-icons';
+import { faUpload, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { HTMLInputEvent } from '../../store/models/html-input'
 
 @Component({
   selector: 'app-file-loader',
@@ -8,18 +9,18 @@ import { faUpload} from '@fortawesome/free-solid-svg-icons';
 })
 export class FileLoaderComponent implements OnInit {
 
-  @Output () emitFiles = new EventEmitter<File[]> ();
+  @Output () public emitFiles: EventEmitter<FileList> = new EventEmitter ();
 
-  private faUpload:any = faUpload;
+  public faUpload:IconDefinition = faUpload;
   
   private widthNum:number = 1;
-  private width:string;
-  private urls = new Array<string>();
-  private showScroll:boolean = false;
+  public width:string;
+  public urls:string[] = new Array<string>();
+  public showScroll:boolean = false;
 
   constructor( ) { }
  
-  private detectFiles(event:any) {
+  public detectFiles(event:HTMLInputEvent):void {
     this.widthNum = 1;    
     this.urls = [];
     let files:any = event.target.files;

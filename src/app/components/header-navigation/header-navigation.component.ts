@@ -6,6 +6,7 @@ import * as fromRoot from '../../store/reducers/index';
 import * as  movieDbActions from '../../store/actions/movieDB.actions';
 import { Observable } from 'rxjs';
 import { Route } from '@angular/compiler/src/core';
+import { NavItems } from '../../store/models/nav-items'
 
 @Component({
   selector: 'app-header-navigation',
@@ -14,15 +15,15 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class HeaderNavigationComponent implements OnInit {
 
-  private items:any
-  private routerLink:Route[] = appRoutes;
+  public items:NavItems[];
+  public routerLink:Route[] = appRoutes;
 
   constructor(private _navigationService: NavigationService,
               private store:Store<fromRoot.State>) {}
 
-  private showAddMovie$:Observable<boolean> = this.store.select(s => s.movieDb.ShowAddMovie);
+  public showAddMovie$:Observable<boolean> = this.store.select(s => s.movieDb.ShowAddMovie);
 
-  private showMovie() {
+  public showMovie():void {
     this.store.dispatch(new movieDbActions.ToggleAddMovie());
   }
 

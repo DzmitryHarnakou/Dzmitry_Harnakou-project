@@ -1,10 +1,10 @@
-<div  [style.backgroundImage]="imgUrl"
+<div  [style.backgroundImage]="img"
       class="movie-list__item"
       (mouseleave) = "backGround = false"
       (mouseenter) = "backGround = true"> 
       <div class="movie-list__bg" 
        *ngIf = "backGround">
-    <div class="movie-list__title">
+    <div class="movie-list__title" [style.fontSize] = "fontSize">
       {{itemTitle}} <br>
       <fa-icon [icon] = "faBook" class="movie-list__in-library" *ngIf = "isInLibrary"></fa-icon>
     </div>

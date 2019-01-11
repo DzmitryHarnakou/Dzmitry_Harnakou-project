@@ -3,29 +3,29 @@
     <fa-icon [icon]="faTimes" (click)='goBack()' class="subscribe-item__icon-close"></fa-icon>
   </div>
   <div class="subscribe-item__header">
-    <div [style.backgroundImage]="'url('+apiImgUrl+itemDescribtion.backdrop_path+')'" class="subscribe-item__img">
+    <div [style.backgroundImage]="imgUrl" class="subscribe-item__img">
     </div>
     <div class="subscribe-item__title-container">
       <input type="button"  [value]="buttonValue"
                             (click)='setToLocal(); button.value = "Added"' 
                             #button
-                            *ngIf = "showbutton" 
+                            *ngIf = "showButton" 
                             class="subscribe-item__button">
       <p class="subscribe-item__title">
-        {{itemDescribtion.original_title || itemDescribtion.original_name}}
+        {{itemDescription.original_title || itemDescription.original_name}}
       </p>
       <p class="subscribe-item__overview">
-        {{itemDescribtion.overview}}
+        {{itemDescription.overview}}
       </p>
     </div>
   </div>
   <div class="subscribe-item__release-date-container">
     <p class="subscribe-item__release-date">
-      Release date: {{itemDescribtion.release_date || itemDescribtion.first_air_date}}
+      Release date: {{itemDescription.release_date || itemDescription.first_air_date}}
     </p>
-    <label for="" class="subscribe-item__rating-label">Rating: {{itemDescribtion.vote_average}}</label>
+    <label for="" class="subscribe-item__rating-label">Rating: {{itemDescription.vote_average}}</label>
     <div class="subscribe-item__rating">
-      <div class="subscribe-item__avarege" [style.width]="itemDescribtion.vote_average*10 +'%'">
+      <div class="subscribe-item__average" [style.width]="voteWidth">
       </div>
     </div>
   </div>

@@ -1,7 +1,6 @@
 import * as movieDbActions from '../actions/movieDB.actions';
 import { MovieListItem } from '../models/movie-list-item';
 import { TvShowListItem } from '../models/tv-show-list-item';
-import { validateConfig } from '@angular/router/src/config';
 
 export interface State {
 movieToSubscribe: MovieListItem;
@@ -50,7 +49,7 @@ export function reducer(state = initialState, action: movieDbActions.MovieDbActi
       case movieDbActions.MovieDbActionTypes.SetMovieListToLocalStorage:
       return state;
 
-      case movieDbActions.MovieDbActionTypes.SetMovieListToLocalStorageSucsess:
+      case movieDbActions.MovieDbActionTypes.SetMovieListToLocalStorageSuccess:
       return {
         ...state,
         localMovieList: action.payload,
@@ -59,7 +58,7 @@ export function reducer(state = initialState, action: movieDbActions.MovieDbActi
       case movieDbActions.MovieDbActionTypes.GetMovieListFromLocalStorage:
       return state;
 
-      case movieDbActions.MovieDbActionTypes.GetMovieListFromLocalStorageSucsess:
+      case movieDbActions.MovieDbActionTypes.GetMovieListFromLocalStorageSuccess:
       return {
         ...state,
         localMovieList: action.payload,
@@ -68,7 +67,7 @@ export function reducer(state = initialState, action: movieDbActions.MovieDbActi
       case movieDbActions.MovieDbActionTypes.SetTvShowListToLocalStorage:
       return state;
 
-      case movieDbActions.MovieDbActionTypes.SetTvShowListToLocalStorageSucsess:
+      case movieDbActions.MovieDbActionTypes.SetTvShowListToLocalStorageSuccess:
       return {
         ...state,
         localTvShowList: action.payload,
@@ -77,7 +76,7 @@ export function reducer(state = initialState, action: movieDbActions.MovieDbActi
       case movieDbActions.MovieDbActionTypes.GetTvShowListFromLocalStorage:
       return state;
 
-      case movieDbActions.MovieDbActionTypes.GetTvShowListFromLocalStorageSucsess:
+      case movieDbActions.MovieDbActionTypes.GetTvShowListFromLocalStorageSuccess:
       return {
         ...state,
         localTvShowList: action.payload,

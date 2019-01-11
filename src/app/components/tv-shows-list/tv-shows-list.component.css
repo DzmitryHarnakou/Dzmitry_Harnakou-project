@@ -23,11 +23,3 @@
   height:20em;
   margin-bottom: 1em;
 }
-
-@media (max-width: 400px) {
-  .list-item__container {
-      width: 10em;
-      height:15em;
-      margin-bottom: 1em;
-  }
-}

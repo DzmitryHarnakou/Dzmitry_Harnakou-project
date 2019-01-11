@@ -22,8 +22,8 @@ export const libraryRoutes:Routes = [
 
 export const appRoutes: Routes =[
     { path: 'movie', component: MovieListComponent, children: movieListRoutes},
-    { path: 'tv#shows', component: TvShowsListComponent, children: tvShowListRoutes},
-    { path: 'my#library', component: LibraryComponent, children: libraryRoutes},
+    { path: 'tvShows', component: TvShowsListComponent, children: tvShowListRoutes},
+    { path: 'myLibrary', component: LibraryComponent, children: libraryRoutes},
     { path: 'support', component: SupportComponent},
     { path: 'about' , component: AboutComponent},
     { path: '**', redirectTo: 'movie', pathMatch: 'full'},

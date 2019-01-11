@@ -1,27 +1,24 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-progressbar',
-  templateUrl: './progressbar.component.html',
-  styleUrls: ['./progressbar.component.css']
+  selector: 'app-progressBar',
+  templateUrl: './progressBar.component.html',
+  styleUrls: ['./progressBar.component.css']
 })
-export class ProgressbarComponent implements OnInit {
+export class ProgressBarComponent implements OnInit {
 
   @Input () private label:string;
-  @Output () public getCurValue = new EventEmitter<number> ();
-  private value:string;
-  private color:string;
+  @Output () public getCurValue: EventEmitter<number> = new EventEmitter ();
+  public value:string;
+  public color:string;
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
-  private getValue(evt: MouseEvent){
+  public getValue(evt: MouseEvent):void{
     this.getCurValue.emit((evt.offsetX)/2);
   }
 
-  private changeValue(evt: MouseEvent){
+  public changeValue(evt: MouseEvent):number{
     this.value = String((evt.offsetX)/2)+'%';
     if (evt.offsetX<=100){
       this.color = 'rgb('+evt.offsetX*2.55+', 255, 0)';
@@ -31,4 +28,8 @@ export class ProgressbarComponent implements OnInit {
     }
     return evt.offsetX/20;
   }
+
+  ngOnInit() {
+  }
+
 }

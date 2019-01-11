@@ -44,12 +44,12 @@ export class MovieDbEffects {
     return this._localStorageService.getTvShowListFromLocalStorage();
   }
  
-  async removeMoviefromLocal(action:any) {
+  async removeMovieFromLocal(action:any) {
     this._localStorageService.removeMovieFromLocalStorage(action);
     return this._localStorageService.getMovieListFromLocalStorage();
   }
 
-  async removeTvShowfromLocal(action:any) {
+  async removeTvShowFromLocal(action:any) {
     this._localStorageService.removeTvShowFromLocalStorage(action);
     return this._localStorageService.getTvShowListFromLocalStorage();
   }
@@ -65,7 +65,7 @@ export class MovieDbEffects {
   ofType(movieDbActions.MovieDbActionTypes.SetMovieListToLocalStorage),
   switchMap(( action: movieDbActions.SetMovieListToLocalStorage ) => from(
   this.setMovieToLocal(action)).pipe(
-  map((resultArray:any)=> new movieDbActions.SetMovieListToLocalStorageSucsess(
+  map((resultArray:any)=> new movieDbActions.SetMovieListToLocalStorageSuccess(
   resultArray), catchError(err => err)))));
   
 
@@ -74,7 +74,7 @@ export class MovieDbEffects {
   ofType(movieDbActions.MovieDbActionTypes.GetMovieListFromLocalStorage),
   switchMap(() => from(this.getMovieFromLocal()
      ).pipe(
-  map((resultArray:any)=> new movieDbActions.GetMovieListFromLocalStorageSucsess(
+  map((resultArray:any)=> new movieDbActions.GetMovieListFromLocalStorageSuccess(
   resultArray), catchError(err => err)))));
   
 
@@ -83,7 +83,7 @@ export class MovieDbEffects {
   ofType(movieDbActions.MovieDbActionTypes.SetTvShowListToLocalStorage),
   switchMap(( action: movieDbActions.SetTvShowListToLocalStorage ) => from(
   this.setTvShowToLocal(action)).pipe(
-  map((resultArray:any)=> new movieDbActions.SetTvShowListToLocalStorageSucsess(
+  map((resultArray:any)=> new movieDbActions.SetTvShowListToLocalStorageSuccess(
   resultArray), catchError(err => err)))));
   
 
@@ -92,15 +92,15 @@ export class MovieDbEffects {
   ofType(movieDbActions.MovieDbActionTypes.GetTvShowListFromLocalStorage),
   switchMap(() => from(this.getTvShowFromLocal()
      ).pipe(
-  map((resultArray:any)=> new movieDbActions.GetTvShowListFromLocalStorageSucsess(
+  map((resultArray:any)=> new movieDbActions.GetTvShowListFromLocalStorageSuccess(
   resultArray), catchError(err => err)))));
 
   @Effect ()
   public removeMovieItem$ = this.actions$.pipe(
     ofType(movieDbActions.MovieDbActionTypes.RemoveMovie),
     switchMap(( action: movieDbActions.RemoveMovie ) => from(
-    this.removeMoviefromLocal(action.payload)).pipe(
-    map((resultArray:any)=> new movieDbActions.GetMovieListFromLocalStorageSucsess(resultArray
+    this.removeMovieFromLocal(action.payload)).pipe(
+    map((resultArray:any)=> new movieDbActions.GetMovieListFromLocalStorageSuccess(resultArray
     ), catchError(err => err)))));
 
     
@@ -108,8 +108,8 @@ export class MovieDbEffects {
   public removeTvShowItem$ = this.actions$.pipe(
     ofType(movieDbActions.MovieDbActionTypes.RemoveTvShow),
     switchMap(( action: movieDbActions.RemoveTvShow) => from(
-    this.removeTvShowfromLocal(action.payload)).pipe(
-    map((resultArray:any)=> new movieDbActions.GetTvShowListFromLocalStorageSucsess(resultArray
+    this.removeTvShowFromLocal(action.payload)).pipe(
+    map((resultArray:any)=> new movieDbActions.GetTvShowListFromLocalStorageSuccess(resultArray
     ), catchError(err => err)))));
 
     @Effect ()

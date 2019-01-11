@@ -1,13 +1,13 @@
 <div class="search-form-input">
 
-    <div class="search-form__title-container">
+  <div class="search-form__title-container">
       <label class="search-form__title-label">Title</label>
       <input type="text" [(ngModel)]="title" 
                          name="title"  
                          class="search-form__title-input" 
                          placeholder="title"
                          (keyup) = 'getTitleVal(title)'>
-                         <p class="search-form__validation-text" *ngIf = "!titleIsValid">Title is requred</p>
+                         <p class="search-form__validation-text" *ngIf = "!titleIsValid">Title is required</p>
     </div>
     <div class="search-form__overview-container">
       <label class="search-form__overview-label">Overview</label>

@@ -18,14 +18,3 @@
 .header-navigation {
   display: flex;
 }
-
-@media (max-width: 600px) {
-  .header-navigation {
-    display: none;
-  }
-
-  .header__container {
-    padding-right: 0em;
-    padding-left: 0.5em;
-  }
-}

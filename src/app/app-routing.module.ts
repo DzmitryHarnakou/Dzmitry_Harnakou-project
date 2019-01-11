@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import {appRoutes} from './services/routings'
 
 @NgModule({
@@ -7,4 +7,3 @@ import {appRoutes} from './services/routings'
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-// ,{ enableTracing: true }

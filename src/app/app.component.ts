@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from './store/reducers/index';
-import { Router, Event } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   
   public constructor(private store:Store<fromRoot.State>) {}
 
-  showAddMovie$ = this.store.select(s => s.movieDb.ShowAddMovie);
+  public showAddMovie$:Observable<boolean> = this.store.select(s => s.movieDb.ShowAddMovie);
 
   ngOnInit() {
   }

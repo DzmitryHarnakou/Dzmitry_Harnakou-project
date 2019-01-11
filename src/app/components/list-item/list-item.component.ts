@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { faBook, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { apiUrl } from '../../services/api.config';
 
 @Component({
@@ -9,18 +9,21 @@ import { apiUrl } from '../../services/api.config';
 })
 export class ListItemComponent implements OnInit {
 
-  private faBook: any= faBook;
-  private faTimes: any = faTimes;
+  public faBook: IconDefinition = faBook;
+  public faTimes: IconDefinition = faTimes;
+  public img: string;
 
-  @Input () private imgUrl:string;
-  @Input () private isInLibrary:boolean;
-  @Input () private itemTitle:string;
-  
+  @Input () public imgUrl:string;
+  @Input () public isInLibrary:boolean;
+  @Input () public itemTitle:string;
+  @Input () public fontSize: string;
+
   constructor() { }
 
   ngOnInit() {    
-    if (~this.imgUrl.indexOf("null")) {
-      this.imgUrl = apiUrl.xTraImg;
+    this.img = "url(" +apiUrl.imageUrl+this.imgUrl+")";
+    if (String(this.imgUrl) === "null") {
+      this.img = apiUrl.xTraImg;
     } 
   }
 

@@ -8,16 +8,16 @@ export enum MovieDbActionTypes {
     SubscribeTvShow = '[MovieDb] SubscribeTvShow',
 
     SetMovieListToLocalStorage = '[MovieDb] SetMovieListToLocalStorage',
-    SetMovieListToLocalStorageSucsess = '[MovieDb] SetMovieListToLocalStorageSucsess',
+    SetMovieListToLocalStorageSuccess = '[MovieDb] SetMovieListToLocalStorageSuccess',
 
     GetMovieListFromLocalStorage = '[MovieDb] GetMovieListFromLocalStorage',
-    GetMovieListFromLocalStorageSucsess = '[MovieDb] GetMovieListFromLocalStorageSucsess',
+    GetMovieListFromLocalStorageSuccess = '[MovieDb] GetMovieListFromLocalStorageSuccess',
 
     SetTvShowListToLocalStorage = '[MovieDb] SetTvShowListToLocalStorage',
-    SetTvShowListToLocalStorageSucsess = '[MovieDb] SetTvShowListToLocalStorageSucsess',
+    SetTvShowListToLocalStorageSuccess = '[MovieDb] SetTvShowListToLocalStorageSuccess',
 
     GetTvShowListFromLocalStorage = '[MovieDb] GetTvShowListFromLocalStorage',
-    GetTvShowListFromLocalStorageSucsess = '[MovieDb] GetTvShowListFromLocalStorageSucsess',
+    GetTvShowListFromLocalStorageSuccess = '[MovieDb] GetTvShowListFromLocalStorageSuccess',
 
     RemoveMovie = '[MovieDb] RemoveMovie',
     RemoveTvShow = '[MovieDb] RemoveTvShow',
@@ -53,8 +53,8 @@ export class SetMovieListToLocalStorage implements Action {
     constructor (public payload:MovieListItem) {}
 }
 
-export class SetMovieListToLocalStorageSucsess implements Action {
-    readonly type = MovieDbActionTypes.SetMovieListToLocalStorageSucsess;
+export class SetMovieListToLocalStorageSuccess implements Action {
+    readonly type = MovieDbActionTypes.SetMovieListToLocalStorageSuccess;
 
     constructor (public payload:MovieListItem[]) {}
 }
@@ -64,8 +64,8 @@ export class GetMovieListFromLocalStorage implements Action {
 
 }
 
-export class GetMovieListFromLocalStorageSucsess implements Action {
-    readonly type = MovieDbActionTypes.GetMovieListFromLocalStorageSucsess;
+export class GetMovieListFromLocalStorageSuccess implements Action {
+    readonly type = MovieDbActionTypes.GetMovieListFromLocalStorageSuccess;
 
     constructor (public payload:MovieListItem[]) {}
 }
@@ -76,8 +76,8 @@ export class SetTvShowListToLocalStorage implements Action {
     constructor (public payload:TvShowListItem) {}
 }
 
-export class SetTvShowListToLocalStorageSucsess implements Action {
-    readonly type = MovieDbActionTypes.SetTvShowListToLocalStorageSucsess;
+export class SetTvShowListToLocalStorageSuccess implements Action {
+    readonly type = MovieDbActionTypes.SetTvShowListToLocalStorageSuccess;
 
     constructor (public payload:TvShowListItem[]) {}
 }
@@ -87,8 +87,8 @@ export class GetTvShowListFromLocalStorage implements Action {
 
 }
 
-export class GetTvShowListFromLocalStorageSucsess implements Action {
-    readonly type = MovieDbActionTypes.GetTvShowListFromLocalStorageSucsess;
+export class GetTvShowListFromLocalStorageSuccess implements Action {
+    readonly type = MovieDbActionTypes.GetTvShowListFromLocalStorageSuccess;
 
     constructor (public payload:TvShowListItem[]) {}
 }
@@ -139,16 +139,16 @@ export type MovieDbActions =
 
 
   | SetMovieListToLocalStorage
-  | SetMovieListToLocalStorageSucsess
+  | SetMovieListToLocalStorageSuccess
 
   | GetMovieListFromLocalStorage
-  | GetMovieListFromLocalStorageSucsess
+  | GetMovieListFromLocalStorageSuccess
 
   | SetTvShowListToLocalStorage
-  | SetTvShowListToLocalStorageSucsess
+  | SetTvShowListToLocalStorageSuccess
 
   | GetTvShowListFromLocalStorage
-  | GetTvShowListFromLocalStorageSucsess
+  | GetTvShowListFromLocalStorageSuccess
 
   | RemoveMovie
   | RemoveTvShow

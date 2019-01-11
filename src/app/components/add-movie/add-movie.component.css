@@ -6,6 +6,7 @@
     justify-content: center;
     color: rgb(92, 92, 92);
     background-color: rgb(38, 33, 38);
+    user-select: none;
 }
 
 .add-movie__content-container{
@@ -17,7 +18,7 @@
     justify-content: space-between;
 }
 
-.form-text-iputs__container{
+.form-text-inputs__container{
     width: 30%;
 }
 
@@ -48,6 +49,11 @@
     color: rgb(158, 158, 158);
 }
 
+.add-movie__button-add:hover {
+    border: 2px solid white;
+    color: white;
+}
+
 .add-movie__button-cancel {
     background-color: rgb(242, 22, 22);
     border: 2px solid rgb(158, 158, 158);
@@ -55,6 +61,11 @@
     height: 2em;
     margin-left: 1em;
     color: rgb(80, 80, 80);
+}
+
+.add-movie__button-cancel:hover {
+    border: 2px solid white;
+    color: white;
 }
 
 .add-movie__file-loader-container {

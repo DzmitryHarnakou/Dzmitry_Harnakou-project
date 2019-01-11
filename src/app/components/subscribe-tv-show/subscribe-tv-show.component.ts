@@ -14,13 +14,13 @@ import { Observable } from 'rxjs';
 })
 export class SubscribeTvShowComponent implements OnInit {
 
-  private itemDescribtion$:Observable<TvShowListItem> = this.store.select(s => s.movieDb.tvShowToSubscribe);
-  private isTvShowInLibrary$:Observable<boolean> = this.store.select(s => s.movieDb.isTvShowInLib);
-  public showbutton:boolean = true;
+  public itemDescription$:Observable<TvShowListItem> = this.store.select(s => s.movieDb.tvShowToSubscribe);
+  public isTvShowInLibrary$:Observable<boolean> = this.store.select(s => s.movieDb.isTvShowInLib);
+  public showButton:boolean = true;
 
   constructor(private store:Store<fromRoot.State>) { }
   
-  private setMovieToLocal(itemDesc:TvShowListItem) {
+  public setMovieToLocal(itemDesc:TvShowListItem):void {
       this.store.dispatch(new movieDbActions.SetTvShowListToLocalStorage(itemDesc));
       this.store.dispatch(new tvShowListActions.UpdateIsInLocal(itemDesc));
   }

@@ -2,11 +2,11 @@
   <div class="side-navigation-bar__container side-navigation-bar">
     <app-side-navigation-bar></app-side-navigation-bar>
   </div>
-  <div class="content__container">
-    <div class="header__container">
+  <div class="movieDB__content-container">
+    <div class="movieDB__header-container">
       <app-header></app-header>
     </div>
-      <app-add-movie *ngIf="showAddMovie$ | async"></app-add-movie>
-      <router-outlet></router-outlet>
+    <app-add-movie *ngIf="showAddMovie$ | async"></app-add-movie>
+    <router-outlet></router-outlet>
   </div>
 </div>

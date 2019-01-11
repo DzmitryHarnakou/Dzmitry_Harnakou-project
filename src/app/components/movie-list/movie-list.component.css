@@ -10,11 +10,11 @@
 }
 
 .scroll-top__container {
-display: flex;
-flex-direction: row;
-align-items: center;
-background-color:  rgb(38, 33, 38);
-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color:  rgb(38, 33, 38);
+    color: white;
 }
 
 .list-item__container {
@@ -39,12 +39,4 @@ color: white;
 
 .warning-message__icon{
     font-size: 7em;
-}
-
-@media (max-width: 400px) {
-    .list-item__container {
-        width: 10em;
-        height:15em;
-        margin-bottom: 1em;
-    }
 }

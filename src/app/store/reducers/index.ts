@@ -6,21 +6,21 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
-import * as fromFimsList from './fims-list.reducer';
+import * as fromFilmsList from './films-list.reducer';
 import * as fromTvShowList from './tv-shows-list.reducer';
 import * as fromMovieDb from './movieDB.reducer';
 
 export interface State {
 
   movieDb: fromMovieDb.State;
-  fimsList: fromFimsList.State;
+  filmsList: fromFilmsList.State;
   tvShowList: fromTvShowList.State;
 
 }
 
 export const reducers: ActionReducerMap<State> = {
 
-  fimsList: fromFimsList.reducer,
+  filmsList: fromFilmsList.reducer,
   tvShowList: fromTvShowList.reducer,
   movieDb: fromMovieDb.reducer,
   

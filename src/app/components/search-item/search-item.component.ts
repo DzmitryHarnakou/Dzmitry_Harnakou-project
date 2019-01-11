@@ -13,27 +13,30 @@ import * as tvShowListActions from '../../store/actions/tv-shows-list.actions';
 })
 export class SearchItemComponent implements OnInit {
 
-  private faSearch:any = faSearch;
+  public inputValue: string;
+  public faSearch:IconDefinition = faSearch;
+  public showForm: boolean;
+  public displayForm: string = this._searchFormService.displayForm;
 
-  constructor(private _searchFormService:SearchFormService,
+  constructor(public _searchFormService:SearchFormService,
               private store:Store<fromRoot.State>) { }
 
-  private getValue(inputValue:string) {
-    this._searchFormService.title = inputValue;
+  public getValue():void {
+    this._searchFormService.title = this.inputValue;
   }
 
-  private searchItems() {
-    this._searchFormService.submited = true;
+  public searchItems():void {
+    this._searchFormService.submitted = true;
     if (window.location.pathname === "/movie") 
     { 
       this.store.dispatch(new filmListActions.SearchFilms(this._searchFormService));
     } 
-    if (window.location.pathname === "/tv%23shows") {
+    if (window.location.pathname === "/tvShows") {
       this.store.dispatch(new tvShowListActions.SearchTvShow(this._searchFormService));
     }
   }
 
-  private toggle () {
+  public toggle ():void {
     this._searchFormService.toggle();
   }
 

@@ -1,23 +1,16 @@
 <div class="navigation-bar-header">
-    <fa-icon [icon] = '_navigationServise.faBars' class="navigation-bar-header__button" (click)=isColapsed()></fa-icon>
-    <div class="logo" *ngIf = "colapseBar">
-        <fa-icon [icon] = '_navigationServise.faWindowClose' class="logo__icon"></fa-icon>
+    <fa-icon [icon] = 'iconBars' 
+             class="navigation-bar-header__button" 
+             (click)=isCollapsed()></fa-icon>
+    <div class="logo" *ngIf = "collapseBar">
+        <fa-icon [icon] = 'iconClose' class="logo__icon"></fa-icon>
         <span class="logo__text">Logo</span>
     </div>
 </div>
 <app-side-navigation-bar-item 
                                 [navIcon]='i.icon'
-                                [showText]='colapseBar'
+                                [showText]='collapseBar'
                                 [navItemText]='i.text'
-                                *ngFor="let i of _navigationServise.items; let l = index"
+                                *ngFor="let i of _navigationService.items; let l = index"
                                 [routerLink]="routerLink[l].path">
 </app-side-navigation-bar-item>
-<app-side-navigation-bar-item [navIcon] = "_navigationServise.headerNavItems[0].icon"
-                              class="navigation-bar__items-mobile"
-                              (click) = "showAddMovie()"
-                              >
-</app-side-navigation-bar-item> 
-<app-side-navigation-bar-item [navIcon] = "_navigationServise.headerNavItems[1].icon"
-                              class="navigation-bar__items-mobile"
-                              [routerLink] = "routerLink[4].path">
-</app-side-navigation-bar-item> 

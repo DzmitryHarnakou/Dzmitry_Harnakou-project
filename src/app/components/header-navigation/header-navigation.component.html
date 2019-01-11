@@ -1,4 +1,4 @@
   <a routerLink = 'movie' [style.color] = "(showAddMovie$ | async) ? 'red' : 'rgb(0, 136, 204)'" (click) = "showMovie()" class="header-navigation__item">{{items[0].text}}</a>
   <a [routerLink] = "routerLink[4].path" routerLinkActive = "active-header__link" class="header-navigation__item">{{items[1].text}}</a>
   <a class="header-navigation__item">{{items[2].text}}</a>
-  <a class="header-navigation__item header-navigation__item--widthout-border">{{items[3].text}}</a>
+  <a class="header-navigation__item header-navigation__item--without-border">{{items[3].text}}</a>

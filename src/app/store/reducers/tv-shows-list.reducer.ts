@@ -19,7 +19,7 @@ export function reducer(state = initialState, action: tvShowListActions.TvShowLi
     case tvShowListActions.TvShowListActionTypes.LoadTvShowList:
     return state;
 
-    case tvShowListActions.TvShowListActionTypes.LoadTvShowListSucsess:
+    case tvShowListActions.TvShowListActionTypes.LoadTvShowListSuccess:
     return {
       ...state,
       tvShowResults: action.payload.items.results,
@@ -32,7 +32,7 @@ export function reducer(state = initialState, action: tvShowListActions.TvShowLi
     case tvShowListActions.TvShowListActionTypes.LoadNextPage:
     return state;
 
-    case tvShowListActions.TvShowListActionTypes.LoadNextPageSucsess:
+    case tvShowListActions.TvShowListActionTypes.LoadNextPageSuccess:
     const itemsList:TvShowListItem[] = action.payload.items.results;
     const updatedList:TvShowListItem[] = state.tvShowResults.concat(itemsList);
     const isInLibItems:boolean[] = action.payload.isInLib;
@@ -57,7 +57,7 @@ export function reducer(state = initialState, action: tvShowListActions.TvShowLi
     case tvShowListActions.TvShowListActionTypes.SearchTvShow:
     return state;
 
-    case tvShowListActions.TvShowListActionTypes.SearchTvShowSucsess:
+    case tvShowListActions.TvShowListActionTypes.SearchTvShowSuccess:
     return {
       ...state,
       tvShowResults: action.payload.results,
@@ -66,7 +66,7 @@ export function reducer(state = initialState, action: tvShowListActions.TvShowLi
     case tvShowListActions.TvShowListActionTypes.LoadNextSearchPage:
     return state;
 
-    case tvShowListActions.TvShowListActionTypes.LoadNextSearchPageSucsess:
+    case tvShowListActions.TvShowListActionTypes.LoadNextSearchPageSuccess:
     const itemList:TvShowListItem[] = action.payload.results;
     const updatedItemList:TvShowListItem[] = state.tvShowResults.concat(itemList);
     return {
@@ -74,7 +74,7 @@ export function reducer(state = initialState, action: tvShowListActions.TvShowLi
       tvShowResults: updatedItemList,
     };
 
-    case tvShowListActions.TvShowListActionTypes.LoadNextSearchPageEror:
+    case tvShowListActions.TvShowListActionTypes.LoadNextSearchPageError:
     return {
       ...state,
     }

@@ -14,13 +14,13 @@ import { Observable } from 'rxjs';
 })
 export class SubscribeMovieComponent implements OnInit {
 
-  private itemDescribtion$:Observable<MovieListItem> = this.store.select(s => s.movieDb.movieToSubscribe);
-  private isMovieInLibrary$:Observable<boolean> = this.store.select(s => s.movieDb.isMovieInLib);
-  public showbutton: boolean = true;
+  public itemDescription$:Observable<MovieListItem> = this.store.select(s => s.movieDb.movieToSubscribe);
+  public isMovieInLibrary$:Observable<boolean> = this.store.select(s => s.movieDb.isMovieInLib);
+  public showButton: boolean = true;
 
   constructor(private store:Store<fromRoot.State>) { }
 
-  public setMovieToLocal(itemDesc: MovieListItem) {
+  public setMovieToLocal(itemDesc: MovieListItem):void {
     this.store.dispatch(new movieDbActions.SetMovieListToLocalStorage(itemDesc));
     this.store.dispatch(new filmListActions.UpdateIsInLocal(itemDesc));
 }

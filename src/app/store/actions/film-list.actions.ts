@@ -4,21 +4,21 @@ import { MovieData } from '../models/movie-data';
 
 export enum FilmListActionTypes {
   LoadFilmLists = '[FilmList] LoadFilmLists',
-  LoadFilmListsSucsess = '[FilmList] LoadFilmListsSucsess',
+  LoadFilmListsSuccess = '[FilmList] LoadFilmListsSuccess',
   LoadFilmListsError = '[FilmList] LoadFilmListsError',
   UpdateIsInLocal = '[FilmList] UpdateIsInLocal',
 
   LoadNextPage = '[FilmList] LoadNextPage',
-  LoadNextPageSucsess = '[FilmList] LoadNextPageSucsess',
+  LoadNextPageSuccess = '[FilmList] LoadNextPageSuccess',
   LoadNextPageError = '[FilmList] LoadNextPageError',
 
   SearchFilms = '[FilmList] SearchFilms',
-  SearchFilmsSucsess = '[FilmList] SearchFilmsSucsess',
-  SearchFilmsEror = '[FilmList] SearchFilmsEror',
+  SearchFilmsSuccess = '[FilmList] SearchFilmsSuccess',
+  SearchFilmsError = '[FilmList] SearchFilmsError',
 
   LoadNextSearchPage = '[FilmList] LoadNextSearchPage',
-  LoadNextSearchPageSucsess = '[FilmList] LoadNextSearchPageSucsess',
-  LoadNextSearchPageEror = '[FilmList] LoadNextSearchPageEror',
+  LoadNextSearchPageSuccess = '[FilmList] LoadNextSearchPageSuccess',
+  LoadNextSearchPageError = '[FilmList] LoadNextSearchPageError',
 }
 
 export class LoadFilmLists implements Action {
@@ -27,8 +27,8 @@ export class LoadFilmLists implements Action {
   constructor () {}
 }
 
-export class LoadFilmListsSucsess implements Action {
-  readonly type = FilmListActionTypes.LoadFilmListsSucsess;
+export class LoadFilmListsSuccess implements Action {
+  readonly type = FilmListActionTypes.LoadFilmListsSuccess;
 
   constructor (public payload:any) {}
 }
@@ -48,8 +48,8 @@ export class LoadNextPage implements Action {
   readonly type = FilmListActionTypes.LoadNextPage;
 }
 
-export class LoadNextPageSucsess implements Action {
-  readonly type = FilmListActionTypes.LoadNextPageSucsess;
+export class LoadNextPageSuccess implements Action {
+  readonly type = FilmListActionTypes.LoadNextPageSuccess;
   
   constructor (public payload:any) {}
 }
@@ -64,12 +64,12 @@ export class SearchFilms implements Action {
   constructor (public payload: any) {}
 }
 
-export class SearchFilmsSucsess implements Action {
-  readonly type = FilmListActionTypes.SearchFilmsSucsess;
+export class SearchFilmsSuccess implements Action {
+  readonly type = FilmListActionTypes.SearchFilmsSuccess;
   constructor (public payload:MovieData) {}
 }
 
-export class SearchFilmsEror implements Action {
+export class SearchFilmsError implements Action {
   readonly type = FilmListActionTypes.SearchFilms;
   constructor (public payload: string) {}
 }
@@ -79,29 +79,29 @@ export class LoadNextSearchPage implements Action {
   constructor () {}
 }
 
-export class LoadNextSearchPageSucsess implements Action {
-  readonly type = FilmListActionTypes.LoadNextSearchPageSucsess;
+export class LoadNextSearchPageSuccess implements Action {
+  readonly type = FilmListActionTypes.LoadNextSearchPageSuccess;
   constructor (public payload: MovieData) {}
 }
 
-export class LoadNextSearchPageEror implements Action {
-  readonly type = FilmListActionTypes.LoadNextSearchPageEror;
+export class LoadNextSearchPageError implements Action {
+  readonly type = FilmListActionTypes.LoadNextSearchPageError;
   constructor (public payload: string) {}
 }
 
 export type FilmListActions = 
   | LoadFilmLists
-  | LoadFilmListsSucsess
+  | LoadFilmListsSuccess
   | LoadFilmListsError
   | UpdateIsInLocal 
   | LoadNextPage
-  | LoadNextPageSucsess
+  | LoadNextPageSuccess
   | LoadNextPageError
 
   | SearchFilms
-  | SearchFilmsSucsess
-  | SearchFilmsEror
+  | SearchFilmsSuccess
+  | SearchFilmsError
 
   | LoadNextSearchPage
-  | LoadNextSearchPageSucsess
-  | LoadNextSearchPageEror
+  | LoadNextSearchPageSuccess
+  | LoadNextSearchPageError

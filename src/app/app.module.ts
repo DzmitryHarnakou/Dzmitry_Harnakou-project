@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SideNavigationBarComponent } from './components/side-navigation-bar/side-navigation-bar.component';
@@ -28,7 +27,7 @@ import { LibraryComponent } from './components/library/library.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
-import { ProgressbarComponent } from './components/progressbar/progressbar.component';
+import { ProgressBarComponent } from './components/progressbar/progressbar.component';
 import { SubscribeMovieComponent } from './components/subscribe-movie/subscribe-movie.component';
 import { SubscribeTvShowComponent } from './components/subscribe-tv-show/subscribe-tv-show.component';
 import { LocalStorageService } from './services/local-storage.service';
@@ -36,7 +35,7 @@ import { MovieDbEffects } from './store/effects/movieDB.effects';
 import { SearchFormService } from './services/search-form.service';
 import { SupportComponent } from './components/support/support.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
-import { FormTextIputsComponent } from './components/form-text-iputs/form-text-iputs.component';
+import { FormTextInputsComponent } from './components/form-text-inputs/form-text-inputs.component';
 import { FormLabelsComponent } from './components/form-labels/form-labels.component';
 import { FileLoaderComponent } from './components/file-loader/file-loader.component';
 import { AboutComponent } from './components/about/about.component';
@@ -59,12 +58,12 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     SubscribeItemWindowComponent,
     LibraryComponent,
     CheckboxComponent,
-    ProgressbarComponent,
+    ProgressBarComponent,
     SubscribeMovieComponent,
     SubscribeTvShowComponent,
     SupportComponent,
     AddMovieComponent,
-    FormTextIputsComponent,
+    FormTextInputsComponent,
     FormLabelsComponent,
     FileLoaderComponent,
     AboutComponent,

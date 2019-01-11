@@ -15,47 +15,47 @@ export class SearchFormComponent implements OnInit {
   constructor(private _searchFormService: SearchFormService,
               private store:Store<fromRoot.State>) { }
 
-  private isValid:boolean = true;
+  public isValid:boolean = true;
               
-  private clickOutside() {
+  public clickOutside():void {
     this._searchFormService.toggle();
   }
 
-  private titleValue(title:string) {
+  public titleValue(title:string):void {
     this._searchFormService.title = title;
   }
 
-  private overviewValue(overview:string) {
+  public overviewValue(overview:string):void {
     this._searchFormService.overview = overview;
   }
 
-  private adultValue(val:boolean) {
+  public adultValue(val:boolean):void {
    this._searchFormService.adult = val;
   }
 
-  private getGenreIds(id:number) {
+  public getGenreIds(id:number):void {
     this._searchFormService.getGenreId(id);
   }
 
-  private popularity(popVal: number) {
+  public popularity(popVal: number):void {
     this._searchFormService.popularity = popVal;
   }
 
-  private voteAverage(voteVal: number) {
+  public voteAverage(voteVal: number):void {
     this._searchFormService.vote_average = voteVal;
   }
 
-  private rememberImputs(remVal: boolean) {
+  public rememberInputs(remVal: boolean):void {
     this._searchFormService.remember_inputs = remVal;
   }
   
-  private submit() {
-    this._searchFormService.submited = true;
+  public submit():void {
+    this._searchFormService.submitted = true;
     if (window.location.pathname === "/movie") 
     { 
       this.store.dispatch(new filmListActions.SearchFilms(this._searchFormService));
     } 
-    if (window.location.pathname === "/tv%23shows") {
+    if (window.location.pathname === "/tvShows") {
       this.store.dispatch(new tvShowListActions.SearchTvShow(this._searchFormService));
     }
     this._searchFormService.toggle();

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as  movieDbActions from '../../store/actions/movieDB.actions';
-import * as fromRoot from '../../store/reducers/index'
+import * as fromRoot from '../../store/reducers/index';
+import { NewMovie } from './NewMovie';
 
 @Component({
   selector: 'app-add-movie',
@@ -10,28 +11,28 @@ import * as fromRoot from '../../store/reducers/index'
 })
 export class AddMovieComponent implements OnInit {
 
-  private adult: boolean = false;
-  private title: string;
-  private overview: string;
-  private genreIds: number[] = [];
-  private files:any;
-  private showMenu: boolean = false;
+  public adult: boolean = false;
+  public title: string;
+  public overview: string;
+  public genreIds: number[] = [];
+  public files: FileList;
+  public showMenu: boolean = false;
 
   constructor(private store:Store<fromRoot.State>) { }
 
-  private getFiles(files: any) {
+  public getFiles(files: FileList): void {
     this.files = files;
   }
 
-  private adultValue(adult: boolean) {
+  public adultValue(adult: boolean): void {
     this.adult = adult;
   }
 
-  private titleValue(title: string) {
+  public titleValue(title: string):void {
     this.title = title
   }
 
-  private getGenreId(genreId: number) {
+  public getGenreId(genreId: number):void {
     for (var i = 0; i < this.genreIds.length; i++) {
       if (this.genreIds[i] === genreId) {
         this.genreIds.splice(i, 1);
@@ -41,11 +42,11 @@ export class AddMovieComponent implements OnInit {
   this.genreIds.push(genreId);
   }
 
-  private overviewValue(overview: string) {
+  public overviewValue(overview: string):void {
     this.overview = overview;
   }
 
-  private submit() {
+  public submit():void {
     if (this.genreIds.length && this.title && this.overview) {
       this.store.dispatch(new movieDbActions.AddMovie(new NewMovie(this.adult, this.genreIds, this.title, this.overview, this.title),this.files));
       this.store.dispatch(new movieDbActions.HideAddMovie());
@@ -53,47 +54,15 @@ export class AddMovieComponent implements OnInit {
       this.showMenu = true;
     }
     if (this.showMenu) {
-      setTimeout(() => this.showMenu = false, 600);
+      setTimeout(() => this.showMenu = false, 1000);
     }
   }
 
-  private onCancel() {
+  public onCancel():void {
     this.store.dispatch(new movieDbActions.HideAddMovie());
   }
 
   ngOnInit() {
   }
 
-}
-
-class NewMovie {
-
-  adult:boolean;
-  backdrop_path: string = null;
-  genre_ids: number[];
-  id: number = null;
-  original_language: string = null;
-  original_title: string;
-  overview: string;
-  popularity:number = null; 
-  poster_path:string = null;
-  release_date:number = null;
-  title:string;
-  video:boolean = false;
-  vote_average:number = null;
-  vote_count:number = null;
-
-  constructor(adult:boolean, 
-              genre_ids:number[], 
-              original_title:string, 
-              overview:string, 
-              title:string) {
-
-    this.adult = adult;
-    this.genre_ids = genre_ids;
-    this.original_title = original_title;
-    this.overview = overview;
-    this.title = title;
-
-  }
 }

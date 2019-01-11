@@ -1,11 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
 import { apiUrl } from '../../services/api.config';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { MovieListItem } from '../../store/models/movie-list-item';
 import { TvShowListItem } from '../../store/models/tv-show-list-item';
-import { SearchFormService } from '../../services/search-form.service';
-
 
 @Component({
   selector: 'app-subscribe-item-window',
@@ -15,33 +13,37 @@ import { SearchFormService } from '../../services/search-form.service';
 export class SubscribeItemWindowComponent implements OnInit {
   
 
-  faTimes:object = faTimes;
+  faTimes:IconDefinition = faTimes;
 
-  @Input () private itemDescribtion: MovieListItem | TvShowListItem;
-  @Input () private isItemInLibrary: boolean;
-  @Input () private showbutton: boolean;
-
-  @Output () setItemToLocal = new EventEmitter<MovieListItem | TvShowListItem> ();
+  @Input () public itemDescription: MovieListItem | TvShowListItem;
+  @Input () public isItemInLibrary: boolean;
+  @Input () public showButton: boolean;
+  @Output () public setItemToLocal: EventEmitter<MovieListItem | TvShowListItem> = new EventEmitter ();
 
   public apiImgUrl: string = apiUrl.imageUrl;
   public buttonValue: string;
-  
+  public voteWidth: string;
+  public imgUrl: string;
 
-  public constructor(private location:Location,
-                    private _searchFormService: SearchFormService) {}
+  constructor(private location:Location) {}
 
-  private goBack() {
+  public goBack():void {
     this.location.back();
   }
 
-  public setToLocal() {
-    this.setItemToLocal.emit(this.itemDescribtion);
+  public setToLocal():void {
+    this.setItemToLocal.emit(this.itemDescription);
   }
 
   ngOnInit() {
     if (this.isItemInLibrary == true) {
       this.buttonValue = "In Library";
     } else{this.buttonValue = "Add To Library"}
+    this.voteWidth = this.itemDescription.vote_average*10 +'%';
+    this.imgUrl = 'url('+this.apiImgUrl+this.itemDescription.backdrop_path+')'
+    if (String(this.itemDescription.backdrop_path) === "null") {
+      this.imgUrl = apiUrl.xTraImg;
+    }
   }
 
 }

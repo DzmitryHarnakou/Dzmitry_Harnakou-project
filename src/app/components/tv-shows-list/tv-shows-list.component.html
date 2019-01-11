@@ -9,10 +9,10 @@
                                      (scrolled)="onScroll()">
     <app-list-item *ngFor="let i of (tvShowList$ | async).tvShowResults; let l = index" 
                    [itemTitle]='i.original_name'
-                   [imgUrl]="'url('+apiImgUrl+i.poster_path+')'" 
+                   [imgUrl]="i.poster_path" 
                    class="list-item list-item__container"
                    (click) = "getItem(i)"
-                   routerLink = "/tv#shows/details"
+                   routerLink = "/tvShows/details"
                    [isInLibrary] = "(isInLibrary$ | async)[l]">
     </app-list-item>
     <router-outlet class="subscribe-item subscribe-item-container"></router-outlet>

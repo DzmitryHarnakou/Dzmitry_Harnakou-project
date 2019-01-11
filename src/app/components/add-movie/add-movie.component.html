@@ -1,14 +1,14 @@
   <div class="add-movie add-movie__container">
     <div class="add-movie__content-container">
-      <div class="form-text-iputs__container">
+      <div class="form-text-inputs__container">
         <h2 class="search_form__header">
           Add movie
         </h2>
-        <app-form-text-iputs  (titleValue) = "titleValue($event)"
-                              (overviewValue) = "overviewValue($event)"
-                              [titleIsValid] = "title"
-                              [overviewIsValid] = "overview"
-                              ></app-form-text-iputs>
+        <app-form-text-inputs  (titleValue) = "titleValue($event)"
+                               (overviewValue) = "overviewValue($event)"
+                               [titleIsValid] = "title"
+                               [overviewIsValid] = "overview"
+                               ></app-form-text-inputs>
       </div>
       <div class="form-labels__container">
         <span class="form-labels__header">Genres</span>
@@ -19,11 +19,16 @@
         <app-checkbox [label]="'Adult'" (boolValue)='adultValue($event)' class="form-label__adult"></app-checkbox>
       </div>
       <div class="add-movie__file-loader-container">
-        <app-file-loader  class=""
-                          (emitFiles) = "getFiles($event)"></app-file-loader>
+        <app-file-loader (emitFiles) = "getFiles($event)"></app-file-loader>
         <div class="add-movie__button-container">
-          <input type="submit" value="Add" (click) = "submit()" class="add-movie__button-add">
-          <input type="button" value="cancel" (click) = "onCancel()" class="add-movie__button-cancel">
+          <input type="submit" 
+          value="Add" 
+          (click) = "submit()" 
+          class="add-movie__button-add">
+          <input type="button" 
+          value="cancel" 
+          (click) = "onCancel()" 
+          class="add-movie__button-cancel">
         </div>
       </div>
     </div>

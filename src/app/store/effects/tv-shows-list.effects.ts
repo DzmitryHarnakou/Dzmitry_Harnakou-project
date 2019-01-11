@@ -73,22 +73,22 @@ private getNextSearchResults() {
 
   @Effect ()
   public loadTvShowList$ = this.actions$.pipe(ofType(tvShowListAction.TvShowListActionTypes.LoadTvShowList),
-  switchMap(() => from(this.getShowList ()).pipe(map((tvShowList)=> new tvShowListAction.LoadTvShowListSucsess(this.sort(tvShowList))),
+  switchMap(() => from(this.getShowList ()).pipe(map((tvShowList)=> new tvShowListAction.LoadTvShowListSuccess(this.sort(tvShowList))),
   catchError(() => of(new tvShowListAction.LoadTvShowListError("Can't load((("))))))
 
   @Effect ()
   public loadNextPage$ = this.actions$.pipe(ofType(tvShowListAction.TvShowListActionTypes.LoadNextPage),
-  switchMap(() => from(this.loadNextPage ()).pipe(map((tvShowList)=> new tvShowListAction.LoadNextPageSucsess(this.sort(tvShowList))),
+  switchMap(() => from(this.loadNextPage ()).pipe(map((tvShowList)=> new tvShowListAction.LoadNextPageSuccess(this.sort(tvShowList))),
   catchError(() => of(new tvShowListAction.LoadNextPageError("Can't load((("))))))
 
   @Effect ()
   public getSearchResults$ = this.actions$.pipe(ofType(tvShowListAction.TvShowListActionTypes.SearchTvShow),
-  switchMap((payload) => from(this.getSearchResults(payload)).pipe(map((searchData)=> new tvShowListAction.SearchTvShowSucsess(searchData)),
-  catchError(() => of(new tvShowListAction.SearchTvShowEror("Can't load((("))))))
+  switchMap((payload) => from(this.getSearchResults(payload)).pipe(map((searchData)=> new tvShowListAction.SearchTvShowSuccess(searchData)),
+  catchError(() => of(new tvShowListAction.SearchTvShowError("Can't load((("))))))
 
   @Effect ()
   public getNextSearchResults$ = this.actions$.pipe(ofType(tvShowListAction.TvShowListActionTypes.LoadNextSearchPage),
-  switchMap(() => from(this.getNextSearchResults()).pipe(map((searchData)=> new tvShowListAction.LoadNextSearchPageSucsess(searchData)),
-  catchError(() => of(new tvShowListAction.LoadNextSearchPageEror("Can't load((("))))))
+  switchMap(() => from(this.getNextSearchResults()).pipe(map((searchData)=> new tvShowListAction.LoadNextSearchPageSuccess(searchData)),
+  catchError(() => of(new tvShowListAction.LoadNextSearchPageError("Can't load((("))))))
 }
 

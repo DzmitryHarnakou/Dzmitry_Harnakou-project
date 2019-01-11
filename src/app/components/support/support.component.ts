@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-support',
@@ -7,7 +7,8 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./support.component.css']
 })
 export class SupportComponent implements OnInit {
-  private faUserCircle:any = faUserCircle;
+  
+  public faUserCircle:IconDefinition = faUserCircle;
 
   constructor() { }
 

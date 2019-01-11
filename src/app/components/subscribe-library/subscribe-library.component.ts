@@ -14,11 +14,11 @@ import { TvShowListItem } from 'src/app/store/models/tv-show-list-item';
 })
 export class SubscribeLibraryComponent implements OnInit {
 
-  public showbutton:boolean = false;
+  public showButton:boolean = false;
 
   constructor(private store:Store<fromRoot.State>) { }
 
-  private itemSubcribtion$:Observable<MovieListItem | TvShowListItem> = this.store.select(s => s.movieDb.librarySubscribe);
+  public itemSubscription$:Observable<MovieListItem | TvShowListItem> = this.store.select(s => s.movieDb.librarySubscribe);
 
   ngOnInit() {
   }

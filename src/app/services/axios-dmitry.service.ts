@@ -10,7 +10,7 @@ export class AxiosDmitryService {
   public getRequest(url:string) {
     var that = this;
     return new Promise((resolve, reject) => {
-        that.requestHandler(url, 'GET').then(responce => resolve(responce)).catch(err => reject(err));
+        that.requestHandler(url, 'GET').then(response => resolve(response)).catch(err => reject(err));
     });
   }
 

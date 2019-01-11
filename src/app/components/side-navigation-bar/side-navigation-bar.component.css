@@ -45,16 +45,3 @@
     display: none;
 }
 
-@media (max-width: 600px) {
-    .logo__text {
-       display: none;
-    }
-
-    .logo__icon {
-        display: none;
-    }
-
-    .navigation-bar__items-mobile {
-        display: block;
-    }
-}

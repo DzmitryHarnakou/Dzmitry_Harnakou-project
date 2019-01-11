@@ -12,3 +12,11 @@
 .support__icon {
     font-size: 10em;
 }
+
+.support__text {
+    user-select: none;
+}
+
+.support__link {
+    user-select: all;
+}

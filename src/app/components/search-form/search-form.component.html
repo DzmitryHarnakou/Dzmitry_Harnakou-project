@@ -5,16 +5,16 @@
       Advanced search
     </h2>
 
-    <app-form-text-iputs class="search-form-iputs__container"
+    <app-form-text-inputs class="search-form-inputs__container"
                          (titleValue) = "titleValue($event)"
                          (overviewValue) = "overviewValue($event)"
                          [titleIsValid] = "isValid"
-                         [overviewIsValid] = "isValid"></app-form-text-iputs>
+                         [overviewIsValid] = "isValid"></app-form-text-inputs>
 
     <div class="search-form__progress-container">
       <app-checkbox [label]="'Adult'" (boolValue)='adultValue($event)'></app-checkbox>
-      <app-progressbar [label]="'Popularity'" (getCurValue)="popularity($event)"></app-progressbar>
-      <app-progressbar [label]="'Vote average'" (getCurValue)="voteAverage($event)"></app-progressbar>
+      <app-progressBar [label]="'Popularity'" (getCurValue)="popularity($event)"></app-progressBar>
+      <app-progressBar [label]="'Vote average'" (getCurValue)="voteAverage($event)"></app-progressBar>
     </div>
 
     <div class="search-form__labels-button-container">
@@ -22,7 +22,7 @@
       <app-form-labels (genreId) = "getGenreIds($event)" class="search-form-labels__container"></app-form-labels>
 
       <div class="search-form__button-container">
-        <app-checkbox [label]="'Remember inputs'" (boolValue) = rememberImputs($event)></app-checkbox>
+        <app-checkbox [label]="'Remember inputs'" (boolValue) = rememberInputs($event)></app-checkbox>
         <input type="submit" value="Search" class="search-form__button" (click)="submit()">
       </div>
     </div>

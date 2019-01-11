@@ -22,24 +22,24 @@ export class TvShowsListComponent implements OnInit, OnDestroy {
   public tvShowList$:Observable<any> = this.store.select((s => s.tvShowList));
   public showAddMovie$ = this.store.select(s => s.movieDb.ShowAddMovie);
 
-  public constructor(private store:Store<fromRoot.State>,
-                     private _searchFormService:SearchFormService) {}
+  constructor(private store:Store<fromRoot.State>,
+              private _searchFormService:SearchFormService) {}
 
-  private onScroll(){
-    if (this._searchFormService.submited){
+  public onScroll():void{
+    if (this._searchFormService.submitted){
       this.store.dispatch(new tvShowListActions.LoadNextSearchPage());
     } else {
       this.store.dispatch(new tvShowListActions.LoadNextPage());
     }
   }
 
-  private getItem(i:TvShowListItem) {
+  public getItem(i:TvShowListItem):void {
     this._searchFormService.showForm = false;
     this.store.dispatch(new movieDbActions.SubscribeTvShow(i));
   }
 
   ngOnInit() {
-    this._searchFormService.submited = false;
+    this._searchFormService.submitted = false;
     this.store.dispatch(new tvShowListActions.LoadTvShowList());
     this.store.dispatch(new movieDbActions.GetTvShowListFromLocalStorage());
   }

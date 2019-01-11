@@ -15,12 +15,12 @@
     color: white;
 }
 
-.header__container {
+.movieDB__header-container {
     width: 100%;
     height: 10vh;
 }
 
-.content__container {
+.movieDB__content-container {
     height: 100vh;
     width: 100%;
 }

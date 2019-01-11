@@ -4,21 +4,21 @@ import { TvShowData } from '../models/tv-show-data';
 
 export enum TvShowListActionTypes {
   LoadTvShowList = '[TvShowList] LoadTvShowList',
-  LoadTvShowListSucsess = '[TvShowList] LoadTvShowListSucsess',
+  LoadTvShowListSuccess = '[TvShowList] LoadTvShowListSuccess',
   LoadTvShowListError = '[TvShowList] LoadTvShowListError',
   UpdateIsInLocal = '[TvShowList] UpdateIsInLocal',
 
   LoadNextPage = '[TvShowList] LoadNextPage',
-  LoadNextPageSucsess = '[TvShowList] LoadNextPageSucsess',
+  LoadNextPageSuccess = '[TvShowList] LoadNextPageSuccess',
   LoadNextPageError = '[TvShowList] LoadNextPageError',
 
   SearchTvShow = '[TvShowList] SearchTvShow',
-  SearchTvShowSucsess = '[TvShowList] SearchTvShowSucsess',
-  SearchTvShowEror = '[TvShowList] SearchTvShowEror',
+  SearchTvShowSuccess = '[TvShowList] SearchTvShowSuccess',
+  SearchTvShowError = '[TvShowList] SearchTvShowError',
 
   LoadNextSearchPage = '[TvShowList] LoadNextSearchPage',
-  LoadNextSearchPageSucsess = '[TvShowList] LoadNextSearchPageSucsess',
-  LoadNextSearchPageEror = '[TvShowList] LoadNextSearchPageEror',
+  LoadNextSearchPageSuccess = '[TvShowList] LoadNextSearchPageSuccess',
+  LoadNextSearchPageError = '[TvShowList] LoadNextSearchPageError',
 }
 
 export class LoadTvShowList implements Action {
@@ -27,8 +27,8 @@ export class LoadTvShowList implements Action {
   constructor () {}
 }
 
-export class LoadTvShowListSucsess implements Action {
-  readonly type = TvShowListActionTypes.LoadTvShowListSucsess;
+export class LoadTvShowListSuccess implements Action {
+  readonly type = TvShowListActionTypes.LoadTvShowListSuccess;
 
   constructor (public payload:any) {}
 }
@@ -48,8 +48,8 @@ export class LoadNextPage implements Action {
   readonly type = TvShowListActionTypes.LoadNextPage;
 }
 
-export class LoadNextPageSucsess implements Action {
-  readonly type = TvShowListActionTypes.LoadNextPageSucsess;
+export class LoadNextPageSuccess implements Action {
+  readonly type = TvShowListActionTypes.LoadNextPageSuccess;
   
   constructor (public payload:any) {}
 }
@@ -64,13 +64,13 @@ export class SearchTvShow implements Action {
   constructor (public payload: any) {}
 }
 
-export class SearchTvShowSucsess implements Action {
-  readonly type = TvShowListActionTypes.SearchTvShowSucsess;
+export class SearchTvShowSuccess implements Action {
+  readonly type = TvShowListActionTypes.SearchTvShowSuccess;
   constructor (public payload:TvShowData) {}
 }
 
-export class SearchTvShowEror implements Action {
-  readonly type = TvShowListActionTypes.SearchTvShow;
+export class SearchTvShowError implements Action {
+  readonly type = TvShowListActionTypes.SearchTvShowError;
   constructor (public payload: string) {}
 }
 
@@ -79,28 +79,28 @@ export class LoadNextSearchPage implements Action {
   constructor () {}
 }
 
-export class LoadNextSearchPageSucsess implements Action {
-  readonly type = TvShowListActionTypes.LoadNextSearchPageSucsess;
+export class LoadNextSearchPageSuccess implements Action {
+  readonly type = TvShowListActionTypes.LoadNextSearchPageSuccess;
   constructor (public payload: TvShowData) {}
 }
 
-export class LoadNextSearchPageEror implements Action {
-  readonly type = TvShowListActionTypes.LoadNextSearchPageEror;
+export class LoadNextSearchPageError implements Action {
+  readonly type = TvShowListActionTypes.LoadNextSearchPageError;
   constructor (public payload: string) {}
 }
 
 export type TvShowListActions = 
   | LoadTvShowList
-  | LoadTvShowListSucsess
+  | LoadTvShowListSuccess
   | LoadTvShowListError
   | UpdateIsInLocal
   | LoadNextPage
-  | LoadNextPageSucsess
+  | LoadNextPageSuccess
   | LoadNextPageError
   | SearchTvShow
-  | SearchTvShowSucsess
-  | SearchTvShowEror
+  | SearchTvShowSuccess
+  | SearchTvShowError
   | LoadNextSearchPage
-  | LoadNextSearchPageSucsess
-  | LoadNextSearchPageEror
+  | LoadNextSearchPageSuccess
+  | LoadNextSearchPageError
 

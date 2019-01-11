@@ -13,3 +13,7 @@
 .active-header__link{
     color: red;
 }
+
+.header-navigation__item--without-border {
+    border-right: 0px;
+}

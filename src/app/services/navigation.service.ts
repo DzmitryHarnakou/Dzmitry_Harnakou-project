@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { faFilm, faTv, faBook, faUserCircle,faBars,faWindowClose, faUser, faPlus, faDollarSign, faBlog} from '@fortawesome/free-solid-svg-icons';
-
+import { faFilm, faTv, faBook, faUserCircle,faBars,faWindowClose, faUser, faPlus, faDollarSign, faBlog, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import { NavItems } from '../store/models/nav-items';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +8,16 @@ import { faFilm, faTv, faBook, faUserCircle,faBars,faWindowClose, faUser, faPlus
 export class NavigationService {
   
   public showMenu:boolean = true;
-  public faBars:any = faBars;
-  public faWindowClose:any =faWindowClose;
-  public items:object[] = [
+  public faBars:IconDefinition = faBars;
+  public faWindowClose:IconDefinition =faWindowClose;
+  public items:NavItems[] = [
     {icon: faFilm, text: "Movies"},
     {icon: faTv, text: "TV Shows"},
     {icon: faBook, text: "My Library"},
     {icon: faUserCircle, text: "Support"}
   ]
 
-  public headerNavItems:object[] = [
+  public headerNavItems:NavItems[] = [
     {icon: faPlus, text: "Add movie"},
     {icon: faUser, text: "About"},
     {icon: faDollarSign, text: "Pricing"},
@@ -26,7 +26,7 @@ export class NavigationService {
 
   constructor() { }
 
-  public isColapse () {
+  public isCollapse ():boolean {
     if (this.showMenu) {
       this.showMenu = false;
     } else { 

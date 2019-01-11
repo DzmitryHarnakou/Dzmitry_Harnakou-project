@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { apiUrl } from '../../services/api.config';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { SearchFormService } from '../../services/search-form.service';
 
 import * as fromRoot from '../../store/reducers/index'
@@ -17,36 +17,36 @@ import { MovieListItem } from 'src/app/store/models/movie-list-item';
 })
 export class MovieListComponent implements OnInit, OnDestroy {
 
-  private faSearch:any = faSearch;
+  public faSearch:IconDefinition = faSearch;
 
-  @Output() public getTargetDescription = new EventEmitter<MovieListItem>();
+  @Output() public getTargetDescription: EventEmitter<MovieListItem> = new EventEmitter ();
 
   public showAddMovie$:Observable<boolean> = this.store.select(s => s.movieDb.ShowAddMovie);
 
   public apiImgUrl: string = apiUrl.imageUrl;
 
-  public isInLibrary$: Observable<boolean[]> = this.store.select(s => s.fimsList.isInLib);
+  public isInLibrary$: Observable<boolean[]> = this.store.select(s => s.filmsList.isInLib);
 
-  public filmsList$: Observable<any> = this.store.select(s => s.fimsList);
+  public filmsList$: Observable<any> = this.store.select(s => s.filmsList);
 
-  public constructor(private store:Store<fromRoot.State>,
+  constructor(private store:Store<fromRoot.State>,
                     private _searchFormService:SearchFormService) {}
 
-  private onScroll(){
-    if (this._searchFormService.submited){
+  public onScroll():void{
+    if (this._searchFormService.submitted){
       this.store.dispatch(new filmListActions.LoadNextSearchPage());
     } else {
       this.store.dispatch(new filmListActions.LoadNextPage());
     }
   }
 
-  private getItem(i: MovieListItem) {
+  public getItem(i: MovieListItem):void {
     this._searchFormService.showForm = false;
     this.store.dispatch(new movieDbActions.SubscribeMovie(i));
   }
 
   ngOnInit() {
-    this._searchFormService.submited = false;
+    this._searchFormService.submitted = false;
     this.store.dispatch(new filmListActions.LoadFilmLists());
     this.store.dispatch(new movieDbActions.GetMovieListFromLocalStorage());
   }

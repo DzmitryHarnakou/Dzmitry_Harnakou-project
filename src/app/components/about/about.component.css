@@ -19,4 +19,10 @@
 .about__text{
     font-family: sans-serif;
     font-size: 0.7em;
+    user-select: none;
+    margin: 1em;
+}
+
+.about__link{
+    user-select: all;
 }
